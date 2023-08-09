@@ -1,5 +1,16 @@
 const TITLE_MIN_LENGTH = 30;
 const TITLE_MAX_LENGTH = 100;
+const PRICE_MIN = 0;
+const PRICE_MAX = 100000;
+const PRICE_SLIDER_STEP = 1000;
+const PRICE_DEFAULT = 1000;
+const MinPriceValues = {
+  'bungalow' : 0,
+  'flat' : 1000,
+  'hotel' : 3000,
+  'house' : 5000,
+  'palace' : 10000
+};
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 const TILE_LAYER = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const COPYRIGHT = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
@@ -34,6 +45,11 @@ export {
   TITLE_MIN_LENGTH,
   TITLE_MAX_LENGTH,
   FILE_TYPES,
+  PRICE_MIN,
+  PRICE_MAX,
+  PRICE_SLIDER_STEP,
+  PRICE_DEFAULT,
+  MinPriceValues,
   SubmitButtonText,
   pristineDefaultConfig,
   TILE_LAYER,
