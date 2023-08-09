@@ -1,5 +1,6 @@
-import {PRICE_MIN, PRICE_MAX, PRICE_SLIDER_STEP, PRICE_DEFAULT, MinPriceValues} from './constants.js';
+import {PRICE_MIN, PRICE_MAX, PRICE_SLIDER_STEP, PRICE_DEFAULT} from './constants.js';
 import {priceInput, priceSliderContainer, housingType} from './variables.js';
+import {onHousingTypeChange} from './price-updater.js';
 // console.log(housingType.value)
 // остановился на добавлении обновления слайдера при выборре селектора
 // 3.3. Поле «Тип жилья» влияет на минимальное значение поля «Цена за ночь»:
@@ -28,36 +29,6 @@ const addPriceSlider = () => {
   });
 };
 
-const updateOptions = (place) => {
-  priceSliderContainer.noUiSlider.updateOptions({
-    range: {
-      'min': place,
-      'max': 100000
-    },
-    start: place,
-  });
-};
-
-const onHousingTypeChange = () => {
-  const {bungalow, flat, hotel, house, palace} = MinPriceValues;
-  switch (housingType.value) {
-    case 'bungalow':
-      updateOptions(bungalow);
-      break;
-    case 'hotel':
-      updateOptions(hotel);
-      break;
-    case 'house':
-      updateOptions(house);
-      break;
-    case 'palace':
-      updateOptions(palace);
-      break;
-    default:
-      updateOptions(flat);
-      break;
-  }
-};
 
 housingType.addEventListener('change', onHousingTypeChange);
 
