@@ -2,12 +2,12 @@ import {deactivateForms} from './form-load-status.js';
 import {sendData} from './load-data.js';
 import {initMap} from './map.js';
 import {uploadMapImage} from './image-upload.js';
-import {adForm, priceInput, roomNumber, uploadMapImageInput} from './variables.js';
+import {adForm, capacity, priceInput, roomNumber, uploadMapImageInput} from './variables.js';
 import {addPristine, pristine} from './validation.js';
 import {addPriceSlider} from './price-slider.js';
 import {PRICE_DEFAULT} from './constants.js';
 import {initTimeCheck} from './time-check.js';
-import {compareRoomsWithGuests} from './compare-rooms-guestes.js';
+import {compareRoomsWithGuests, compareGuestsWithRooms} from './compare-rooms-guests.js';
 
 deactivateForms();
 initMap();
@@ -22,6 +22,7 @@ priceInput.value = '';
 initTimeCheck();
 compareRoomsWithGuests();
 roomNumber.addEventListener('change', compareRoomsWithGuests);
+capacity.addEventListener('change', compareGuestsWithRooms);
 
 adForm.addEventListener('submit', (evt) => {
   evt.preventDefault();

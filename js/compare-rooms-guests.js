@@ -31,5 +31,21 @@ const compareRoomsWithGuests = () => {
   }
 };
 
-export {compareRoomsWithGuests};
+const compareGuestsWithRooms = () => {
+  switch (capacity.value) {
+    case oneGuest:
+      roomNumber.value = oneRoom;
+      break;
+    case twoGuests:
+      roomNumber.value = twoRooms;
+      break;
+    case threeGuests:
+      roomNumber.value = threeRooms;
+      break;
+    case noGuests:
+      roomNumber.value = manyRooms;
+  }
+};
+
+export {compareRoomsWithGuests, compareGuestsWithRooms};
 
