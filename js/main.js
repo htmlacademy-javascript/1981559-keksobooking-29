@@ -10,6 +10,10 @@ import {PRICE_DEFAULT} from './constants.js';
 deactivateForms();
 initMap();
 uploadMapImageInput.addEventListener('change', uploadMapImage);
+priceInput.placeholder = String(PRICE_DEFAULT);
+priceInput.addEventListener('wheel', (evt) => {
+  evt.preventDefault();
+});
 addPristine(PRICE_DEFAULT);
 addPriceSlider();
 

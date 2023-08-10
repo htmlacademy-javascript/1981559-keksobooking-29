@@ -1055,3 +1055,13 @@ fieldset {
   padding-left: 12px;
   font-weight: 500;
 }
+
+#price::-webkit-outer-spin-button,
+#price::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#price[type=number] {
+  -moz-appearance:textfield;
+}
