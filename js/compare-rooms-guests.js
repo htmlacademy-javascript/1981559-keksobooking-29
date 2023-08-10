@@ -34,10 +34,14 @@ const compareRoomsWithGuests = () => {
 const compareGuestsWithRooms = () => {
   switch (capacity.value) {
     case oneGuest:
-      roomNumber.value = oneRoom;
+      if (roomNumber.value > Number(threeRooms)) {
+        roomNumber.value = oneRoom;
+      }
       break;
     case twoGuests:
-      roomNumber.value = twoRooms;
+      if (roomNumber.value > Number(threeRooms)) {
+        roomNumber.value = twoRooms;
+      }
       break;
     case threeGuests:
       roomNumber.value = threeRooms;
