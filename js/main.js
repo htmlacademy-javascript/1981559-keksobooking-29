@@ -1,8 +1,8 @@
 import {deactivateForms} from './form-load-status.js';
 import {sendData} from './load-data.js';
 import {initMap} from './map.js';
-import {uploadMapImage} from './image-upload.js';
-import {adForm, capacity, housingType, priceInput, roomNumber, uploadMapImageInput} from './variables.js';
+import {initUploadImage} from './image-upload.js';
+import {adForm, capacity, housingType, priceInput, roomNumber} from './variables.js';
 import {pristine} from './validation.js';
 import {addPriceSlider} from './price-slider.js';
 import {minPriceValues, PRICE_DEFAULT} from './constants.js';
@@ -11,7 +11,7 @@ import {compareRoomsWithGuests, compareGuestsWithRooms} from './compare-rooms-gu
 
 deactivateForms();
 initMap();
-uploadMapImageInput.addEventListener('change', uploadMapImage);
+initUploadImage();
 priceInput.placeholder = String(PRICE_DEFAULT);
 priceInput.addEventListener('wheel', (evt) => {
   evt.preventDefault();
