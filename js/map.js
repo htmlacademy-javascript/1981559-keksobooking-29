@@ -3,6 +3,7 @@ import {TILE_LAYER, COPYRIGHT, ZOOM,} from './constants.js';
 import {coordinatesOfAddress} from './variables.js';
 
 const initMap = () => {
+  coordinatesOfAddress.setAttribute('readonly', 'true');
   const iconConfig = {
     url: './img/main-pin.svg',
     width: 52,
