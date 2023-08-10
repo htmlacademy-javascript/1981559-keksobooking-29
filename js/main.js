@@ -2,12 +2,13 @@ import {deactivateForms} from './form-load-status.js';
 import {sendData} from './load-data.js';
 import {initMap} from './map.js';
 import {initUploadImage} from './image-upload.js';
-import {adForm, capacity, housingType, priceInput, roomNumber} from './variables.js';
+import {adForm, capacity, priceInput, roomNumber} from './variables.js';
 import {pristine} from './validation.js';
 import {addPriceSlider} from './price-slider.js';
-import {minPriceValues, PRICE_DEFAULT} from './constants.js';
+import {PRICE_DEFAULT} from './constants.js';
 import {initTimeCheck} from './time-check.js';
 import {compareRoomsWithGuests, compareGuestsWithRooms} from './compare-rooms-guests.js';
+import {getMinPriceValue} from './price-value.js';
 
 deactivateForms();
 initMap();
@@ -29,27 +30,7 @@ adForm.addEventListener('submit', (evt) => {
   pristine.validate();
   let isValid = true;
   let minPrice = 0;
-  const getMinPriceValue = () => {
-    const {bungalow, flat, hotel, house, palace} = minPriceValues;
-    switch (housingType.value) {
-      case 'bungalow':
-        minPrice = bungalow;
-        break;
-      case 'hotel':
-        minPrice = hotel;
-        break;
-      case 'house':
-        minPrice = house;
-        break;
-      case 'palace':
-        minPrice = palace;
-        break;
-      default:
-        minPrice = flat;
-        break;
-    }
-  };
-  getMinPriceValue();
+  minPrice = getMinPriceValue();
   if (priceInput.value < minPrice) {
     console.log(minPrice)
     pristine.addError(priceInput, `Минимальная цена - ${minPrice}`);
