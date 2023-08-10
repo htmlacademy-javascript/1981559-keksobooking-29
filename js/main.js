@@ -10,7 +10,6 @@ deactivateForms();
 initMap();
 uploadMapImageInput.addEventListener('change', uploadMapImage);
 addPriceSlider();
-
 adForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const isValid = pristine.validate();
@@ -20,20 +19,20 @@ adForm.addEventListener('submit', (evt) => {
     console.log('not ok');
   }
   // blockSubmitButton();
-  // sendData(new FormData(evt.target))
-  //   .then(
-  //     () => {
-  //       console.log('ok');
-  //       // showSuccess();
-  //     }
-  //   )
-  //   .catch(
-  //     () => {
-  //       console.log('not ok');
-  //     }
-  //     // (err) => {
-  //     //   showError(err.message);
-  //     // }
-  //   )
-  //   .finally(unblockSubmitButton);
+  sendData(new FormData(evt.target))
+    .then(
+      () => {
+        console.log('ok');
+        // showSuccess();
+      }
+    )
+    .catch(
+      () => {
+        console.log('not ok');
+      }
+      // (err) => {
+      //   showError(err.message);
+      // }
+    )
+    // .finally(unblockSubmitButton);
 });
