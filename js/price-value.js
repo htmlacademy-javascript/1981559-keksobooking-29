@@ -1,27 +1,33 @@
 import {minPriceValues} from './constants.js';
-import {housingType} from './variables.js';
+import {housingType, priceInput} from './variables.js';
+import {pristine} from './validation.js';
 
-const getMinPriceValue = () => {
-  let price = 0;
+const checkMinPrice = () => {
   const {bungalow, flat, hotel, house, palace} = minPriceValues;
+  let minPrice = 0;
   switch (housingType.value) {
     case 'bungalow':
-      price = bungalow;
+      minPrice = bungalow;
       break;
     case 'flat':
-      price = flat;
+      minPrice = flat;
       break;
     case 'hotel':
-      price = hotel;
+      minPrice = hotel;
       break;
     case 'house':
-      price = house;
+      minPrice = house;
       break;
     case 'palace':
-      price = palace;
+      minPrice = palace;
       break;
   }
-  return price;
+
+  if (priceInput.value < minPrice) {
+    pristine.addError(priceInput, `Минимальная цена - ${minPrice}`);
+    return false;
+  }
+  return true;
 };
 
-export {getMinPriceValue};
+export {checkMinPrice};

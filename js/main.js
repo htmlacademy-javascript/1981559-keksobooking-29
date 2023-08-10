@@ -8,7 +8,7 @@ import {addPriceSlider} from './price-slider.js';
 import {PRICE_DEFAULT} from './constants.js';
 import {initTimeCheck} from './time-check.js';
 import {compareRoomsWithGuests, compareGuestsWithRooms} from './compare-rooms-guests.js';
-import {getMinPriceValue} from './price-value.js';
+import {checkMinPrice} from './price-value.js';
 
 deactivateForms();
 initMap();
@@ -29,11 +29,7 @@ adForm.addEventListener('submit', (evt) => {
   pristine.reset();
   pristine.validate();
   let isValid = true;
-  const minPrice = getMinPriceValue();
-  if (priceInput.value < minPrice) {
-    pristine.addError(priceInput, `Минимальная цена - ${minPrice}`);
-    isValid = false;
-  }
+  isValid = checkMinPrice();
   if (isValid) {
     console.log('ok');
   } else {
