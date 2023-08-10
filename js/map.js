@@ -41,7 +41,8 @@ const initMap = () => {
   mainPinMarker.addTo(map);
 
   mainPinMarker.on('moveend', (evt) => {
-    coordinatesOfAddress.value = evt.target.getLatLng();
+    const {lat, lng} = evt.target.getLatLng();
+    coordinatesOfAddress.value = `${lat} ${lng}`;
   });
 };
 
