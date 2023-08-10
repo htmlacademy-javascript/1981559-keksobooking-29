@@ -1,5 +1,5 @@
 import {housingType, priceInput} from './variables.js';
-import {MinPriceValues} from './constants.js';
+import {minPriceValues} from './constants.js';
 import {addPristine, pristine} from './validation.js';
 
 const updateOptions = (place) => {
@@ -9,7 +9,7 @@ const updateOptions = (place) => {
 };
 
 const onHousingTypeChange = () => {
-  const {bungalow, flat, hotel, house, palace} = MinPriceValues;
+  const {bungalow, flat, hotel, house, palace} = minPriceValues;
   switch (housingType.value) {
     case 'bungalow':
       updateOptions(bungalow);

@@ -4,12 +4,24 @@ const PRICE_MIN = 0;
 const PRICE_MAX = 100000;
 const PRICE_SLIDER_STEP = 1000;
 const PRICE_DEFAULT = 1000;
-const MinPriceValues = {
+const minPriceValues = {
   'bungalow' : 0,
   'flat' : 1000,
   'hotel' : 3000,
   'house' : 5000,
   'palace' : 10000
+};
+const numberOfRooms = {
+  'oneRoom' : '1',
+  'twoRooms' : '2',
+  'threeRooms' : '3',
+  'manyRooms' : '100'
+};
+const numberOfGuests = {
+  'oneGuest' : '1',
+  'twoGuests' : '2',
+  'threeGuests' : '3',
+  'noGuests' : '0'
 };
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 const TILE_LAYER = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
@@ -49,7 +61,7 @@ export {
   PRICE_MAX,
   PRICE_SLIDER_STEP,
   PRICE_DEFAULT,
-  MinPriceValues,
+  minPriceValues,
   SubmitButtonText,
   pristineDefaultConfig,
   TILE_LAYER,
@@ -58,5 +70,7 @@ export {
   BASE_URL,
   Route,
   Method,
-  ErrorText
+  ErrorText,
+  numberOfRooms,
+  numberOfGuests
 };

@@ -8,7 +8,7 @@ const initTimeCheck = () => {
   });
 
   timeOut.addEventListener('change', () => {
-    if (timeOut.value !== timeIn.value) {
+    if (timeIn.value !== timeOut.value) {
       timeIn.value = timeOut.value;
     }
   });
