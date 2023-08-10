@@ -11,14 +11,14 @@ const compareRoomsWithGuests = () => {
     case twoRooms:
       if (capacity.value >= twoGuests) {
         capacity.value = twoGuests;
-      } else if (capacity.value === '0') {
+      } else if (capacity.value === noGuests) {
         capacity.value = twoGuests;
       }
       break;
     case threeRooms:
       if (capacity.value >= threeGuests) {
         capacity.value = threeGuests;
-      } else if (capacity.value === '0') {
+      } else if (capacity.value === noGuests) {
         capacity.value = threeGuests;
       }
       break;
