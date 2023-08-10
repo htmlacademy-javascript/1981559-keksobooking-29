@@ -6,6 +6,7 @@ import {adForm, priceInput, uploadMapImageInput} from './variables.js';
 import {addPristine, pristine} from './validation.js';
 import {addPriceSlider} from './price-slider.js';
 import {PRICE_DEFAULT} from './constants.js';
+import {initTimeCheck} from './time-check.js';
 
 deactivateForms();
 initMap();
@@ -17,6 +18,7 @@ priceInput.addEventListener('wheel', (evt) => {
 addPristine(PRICE_DEFAULT);
 addPriceSlider();
 priceInput.value = '';
+initTimeCheck();
 
 adForm.addEventListener('submit', (evt) => {
   evt.preventDefault();

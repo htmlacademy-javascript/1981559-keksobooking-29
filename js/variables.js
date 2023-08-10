@@ -7,6 +7,8 @@ const formTitle = adForm.querySelector('#title');
 const priceInput = adForm.querySelector('#price');
 const priceSliderContainer = adForm.querySelector('.ad-form__slider');
 const housingType = adForm.querySelector('#type');
+const timeIn = adForm.querySelector('#timein');
+const timeOut = adForm.querySelector('#timeout');
 
 const mapForm = document.querySelector('.map__filters');
 const interactiveFormElements = document.querySelectorAll('select, fieldset');
@@ -22,5 +24,7 @@ export {
   priceSliderContainer,
   priceInput,
   formTitle,
-  housingType
+  housingType,
+  timeIn,
+  timeOut
 };
