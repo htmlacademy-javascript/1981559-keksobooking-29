@@ -1,10 +1,7 @@
 import {housingType, priceInput} from './variables.js';
 import {minPriceValues} from './constants.js';
-import {addPristine, pristine} from './validation.js';
 
-const updateOptions = (place) => {
-  pristine.destroy();
-  addPristine(place);
+const updatePlaceholder = (place) => {
   priceInput.placeholder = place;
 };
 
@@ -12,19 +9,19 @@ const onHousingTypeChange = () => {
   const {bungalow, flat, hotel, house, palace} = minPriceValues;
   switch (housingType.value) {
     case 'bungalow':
-      updateOptions(bungalow);
+      updatePlaceholder(bungalow);
       break;
     case 'hotel':
-      updateOptions(hotel);
+      updatePlaceholder(hotel);
       break;
     case 'house':
-      updateOptions(house);
+      updatePlaceholder(house);
       break;
     case 'palace':
-      updateOptions(palace);
+      updatePlaceholder(palace);
       break;
     default:
-      updateOptions(flat);
+      updatePlaceholder(flat);
       break;
   }
 };

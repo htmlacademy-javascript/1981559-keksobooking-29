@@ -7,22 +7,14 @@ priceInput.required = true;
 priceInput.dataset.pristineRequiredMessage = 'Обязательное числовое поле.';
 priceInput.dataset.pristineMax = '100000';
 priceInput.dataset.pristineMaxMessage = 'Максимальная цена — 100 000.';
-let pristine = {};
 
-const addPristine = (minValue) => {
-  pristine = new Pristine(adForm, pristineDefaultConfig, false);
+const pristine = new Pristine(adForm, pristineDefaultConfig, false);
 
-  const checkLength = () => {
-    const inputLength = formTitle.value.trim().length;
-    return inputLength >= TITLE_MIN_LENGTH && inputLength <= TITLE_MAX_LENGTH;
-  };
-
-  const checkMinValue = () => {
-    const priceInputValue = priceInput.value;
-    return priceInputValue >= minValue;
-  };
-  pristine.addValidator(priceInput, checkMinValue, `Минимальная цена ${minValue}`);
-  pristine.addValidator(formTitle, checkLength, 'От 30 до 100 символов.');
+const checkLength = () => {
+  const inputLength = formTitle.value.trim().length;
+  return inputLength >= TITLE_MIN_LENGTH && inputLength <= TITLE_MAX_LENGTH;
 };
 
-export {addPristine, pristine};
+pristine.addValidator(formTitle, checkLength, 'От 30 до 100 символов.');
+
+export {pristine};
