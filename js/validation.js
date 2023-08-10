@@ -20,8 +20,8 @@ const checkMinValue = () => {
   const priceInputValue = priceInput.value;
   return priceInputValue > PRICE_DEFAULT;
 };
-
-pristine.addValidator(formTitle, checkLength, 'От 30 до 100 символов.');
 pristine.addValidator(priceInput, checkMinValue, 'min value');
+pristine.addValidator(formTitle, checkLength, 'От 30 до 100 символов.');
+
 
 export {pristine};

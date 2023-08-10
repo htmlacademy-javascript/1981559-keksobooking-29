@@ -1,11 +1,11 @@
 import {housingType, priceSliderContainer} from './variables.js';
-import {MinPriceValues} from './constants.js';
+import {MinPriceValues, PRICE_MAX} from './constants.js';
 
 const updateOptions = (place) => {
   priceSliderContainer.noUiSlider.updateOptions({
     range: {
       'min': place,
-      'max': 100000
+      'max': PRICE_MAX
     },
     start: place,
   });

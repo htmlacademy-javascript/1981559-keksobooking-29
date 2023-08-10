@@ -2,9 +2,9 @@ import {deactivateForms} from './form-load-status.js';
 import {sendData} from './load-data.js';
 import {initMap} from './map.js';
 import {uploadMapImage} from './image-upload.js';
-import {addPriceSlider} from './price-slider.js';
 import {adForm, priceInput, uploadMapImageInput} from './variables.js';
 import {pristine} from './validation.js';
+import {addPriceSlider} from './price-slider.js';
 
 deactivateForms();
 initMap();
