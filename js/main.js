@@ -29,10 +29,8 @@ adForm.addEventListener('submit', (evt) => {
   pristine.reset();
   pristine.validate();
   let isValid = true;
-  let minPrice = 0;
-  minPrice = getMinPriceValue();
+  const minPrice = getMinPriceValue();
   if (priceInput.value < minPrice) {
-    console.log(minPrice)
     pristine.addError(priceInput, `Минимальная цена - ${minPrice}`);
     isValid = false;
   }
