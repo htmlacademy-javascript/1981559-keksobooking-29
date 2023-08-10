@@ -1,7 +1,10 @@
 import {housingType, priceSliderContainer} from './variables.js';
 import {MinPriceValues, PRICE_MAX} from './constants.js';
+import {addPristine, pristine} from './validation.js';
 
 const updateOptions = (place) => {
+  pristine.destroy();
+  addPristine(place);
   priceSliderContainer.noUiSlider.updateOptions({
     range: {
       'min': place,

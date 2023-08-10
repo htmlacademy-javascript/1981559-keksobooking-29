@@ -3,16 +3,18 @@ import {sendData} from './load-data.js';
 import {initMap} from './map.js';
 import {uploadMapImage} from './image-upload.js';
 import {adForm, priceInput, uploadMapImageInput} from './variables.js';
-import {pristine} from './validation.js';
+import {addPristine, pristine} from './validation.js';
 import {addPriceSlider} from './price-slider.js';
+import {PRICE_DEFAULT} from './constants.js';
 
 deactivateForms();
 initMap();
 uploadMapImageInput.addEventListener('change', uploadMapImage);
+addPristine(PRICE_DEFAULT);
 addPriceSlider();
+
 adForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  console.log(priceInput.value)
   const isValid = pristine.validate();
   if (isValid) {
     console.log('ok');
