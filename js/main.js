@@ -16,6 +16,7 @@ priceInput.addEventListener('wheel', (evt) => {
 });
 addPristine(PRICE_DEFAULT);
 addPriceSlider();
+priceInput.value = '';
 
 adForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
