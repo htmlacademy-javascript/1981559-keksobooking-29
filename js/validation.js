@@ -1,5 +1,7 @@
-import {adForm, formTitle, priceInput} from './variables.js';
-import {pristineDefaultConfig, TITLE_MAX_LENGTH, TITLE_MIN_LENGTH} from './constants.js';
+import {adForm, formTitle, priceInput, roomNumber, capacity} from './variables.js';
+import {pristineDefaultConfig, TITLE_MAX_LENGTH, TITLE_MIN_LENGTH, numberOfGuests, numberOfRooms} from './constants.js';
+const {oneRoom, twoRooms, threeRooms, manyRooms} = numberOfRooms;
+const {oneGuest, twoGuests, threeGuests, noGuests} = numberOfGuests;
 
 formTitle.required = true;
 formTitle.dataset.pristineRequiredMessage = 'Обязательное текстовое поле.';
@@ -15,6 +17,34 @@ const checkLength = () => {
   return inputLength >= TITLE_MIN_LENGTH && inputLength <= TITLE_MAX_LENGTH;
 };
 
+const checkRooms = () => {
+  switch (roomNumber.value) {
+    case oneRoom:
+      if (capacity.value !== oneGuest) {
+        return false;
+      }
+      break;
+    case twoRooms:
+      if (capacity.value !== oneGuest && capacity.value !== twoGuests) {
+        return false;
+      }
+      break;
+    case threeRooms:
+      if (capacity.value !== oneGuest && capacity.value !== twoGuests && capacity.value !== threeGuests) {
+        return false;
+      }
+      break;
+    case manyRooms: {
+      if (capacity.value !== noGuests) {
+        return false;
+      }
+      break;
+    }
+  }
+  return true;
+};
+
 pristine.addValidator(formTitle, checkLength, 'От 30 до 100 символов.');
+pristine.addValidator(roomNumber, checkRooms, '123');
 
 export {pristine};

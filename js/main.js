@@ -2,12 +2,11 @@ import {deactivateForms} from './form-load-status.js';
 import {sendData} from './load-data.js';
 import {initMap} from './map.js';
 import {initUploadImage} from './image-upload.js';
-import {adForm, capacity, priceInput, roomNumber} from './variables.js';
+import {adForm, priceInput} from './variables.js';
 import {pristine} from './validation.js';
 import {addPriceSlider} from './price-slider.js';
 import {PRICE_DEFAULT} from './constants.js';
 import {initTimeCheck} from './time-check.js';
-import {compareRoomsWithGuests, compareGuestsWithRooms} from './compare-rooms-guests.js';
 import {checkMinPrice} from './price-value.js';
 
 deactivateForms();
@@ -20,13 +19,9 @@ priceInput.addEventListener('wheel', (evt) => {
 addPriceSlider();
 priceInput.value = '';
 initTimeCheck();
-compareRoomsWithGuests();
-roomNumber.addEventListener('change', compareRoomsWithGuests);
-capacity.addEventListener('change', compareGuestsWithRooms);
 
 adForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  pristine.reset();
   pristine.validate();
   let isValid = true;
   isValid = checkMinPrice();
