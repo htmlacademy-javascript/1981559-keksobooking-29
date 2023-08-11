@@ -1,7 +1,8 @@
-import {adForm, formTitle, priceInput, roomNumber, capacity, timeIn, timeOut} from './variables.js';
-import {pristineDefaultConfig, TITLE_MAX_LENGTH, TITLE_MIN_LENGTH, numberOfGuests, numberOfRooms} from './constants.js';
+import {adForm, formTitle, priceInput, roomNumber, capacity, timeIn, timeOut, housingType} from './variables.js';
+import {pristineDefaultConfig, TITLE_MAX_LENGTH, TITLE_MIN_LENGTH, numberOfGuests, numberOfRooms, minPriceValues} from './constants.js';
 const {oneRoom, twoRooms, threeRooms, manyRooms} = numberOfRooms;
 const {oneGuest, twoGuests, threeGuests, noGuests} = numberOfGuests;
+const {bungalow, flat, hotel, house, palace} = minPriceValues;
 
 formTitle.required = true;
 formTitle.dataset.pristineRequiredMessage = 'Обязательное текстовое поле.';
@@ -72,8 +73,31 @@ const getRoomsErrorMessage = () => {
 
 const checkTime = () => (timeOut.value === timeIn.value);
 
+const checkMinPrice = () => {
+  let minPrice = 0;
+  switch (housingType.value) {
+    case 'bungalow':
+      minPrice = bungalow;
+      break;
+    case 'flat':
+      minPrice = flat;
+      break;
+    case 'hotel':
+      minPrice = hotel;
+      break;
+    case 'house':
+      minPrice = house;
+      break;
+    case 'palace':
+      minPrice = palace;
+      break;
+  }
+  return priceInput.value >= minPrice;
+};
+
 pristine.addValidator(formTitle, checkLength, 'От 30 до 100 символов.');
 pristine.addValidator(roomNumber, checkRooms, getRoomsErrorMessage);
 pristine.addValidator(timeOut, checkTime, 'Время заедзда должно соответствовать времени выезда.');
+pristine.addValidator(priceInput, checkMinPrice, '123');
 
 export {pristine};

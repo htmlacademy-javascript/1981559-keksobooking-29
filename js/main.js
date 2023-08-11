@@ -6,7 +6,6 @@ import {adForm, priceInput} from './variables.js';
 import {pristine} from './validation.js';
 import {addPriceSlider} from './price-slider.js';
 import {PRICE_DEFAULT} from './constants.js';
-import {checkMinPrice} from './price-value.js';
 
 deactivateForms();
 initMap();
@@ -20,10 +19,8 @@ priceInput.value = '';
 
 adForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  pristine.validate();
   //Поменять логику
-  let isValid = true;
-  isValid = checkMinPrice();
+  const isValid = pristine.validate();
   // выше возможна ошибка
   //добавить ресет noUiSlider
   if (isValid) {
