@@ -1,4 +1,4 @@
-import {adForm, formTitle, priceInput, roomNumber, capacity} from './variables.js';
+import {adForm, formTitle, priceInput, roomNumber, capacity, timeIn, timeOut} from './variables.js';
 import {pristineDefaultConfig, TITLE_MAX_LENGTH, TITLE_MIN_LENGTH, numberOfGuests, numberOfRooms} from './constants.js';
 const {oneRoom, twoRooms, threeRooms, manyRooms} = numberOfRooms;
 const {oneGuest, twoGuests, threeGuests, noGuests} = numberOfGuests;
@@ -70,7 +70,10 @@ const getRoomsErrorMessage = () => {
   }
 };
 
+const checkTime = () => (timeOut.value === timeIn.value);
+
 pristine.addValidator(formTitle, checkLength, 'От 30 до 100 символов.');
 pristine.addValidator(roomNumber, checkRooms, getRoomsErrorMessage);
+pristine.addValidator(timeOut, checkTime, 'Время заедзда должно соответствовать времени выезда.');
 
 export {pristine};

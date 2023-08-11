@@ -6,7 +6,6 @@ import {adForm, priceInput} from './variables.js';
 import {pristine} from './validation.js';
 import {addPriceSlider} from './price-slider.js';
 import {PRICE_DEFAULT} from './constants.js';
-import {initTimeCheck} from './time-check.js';
 import {checkMinPrice} from './price-value.js';
 
 deactivateForms();
@@ -18,13 +17,15 @@ priceInput.addEventListener('wheel', (evt) => {
 });
 addPriceSlider();
 priceInput.value = '';
-initTimeCheck();
 
 adForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
   pristine.validate();
+  //Поменять логику
   let isValid = true;
   isValid = checkMinPrice();
+  // выше возможна ошибка
+  //добавить ресет noUiSlider
   if (isValid) {
     console.log('ok');
   } else {
