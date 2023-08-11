@@ -19,9 +19,7 @@ priceInput.value = '';
 
 adForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  //Поменять логику
   const isValid = pristine.validate();
-  // выше возможна ошибка
   //добавить ресет noUiSlider
   if (isValid) {
     console.log('ok');
