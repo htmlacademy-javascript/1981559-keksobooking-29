@@ -17,32 +17,6 @@ const checkLength = () => {
   return inputLength >= TITLE_MIN_LENGTH && inputLength <= TITLE_MAX_LENGTH;
 };
 
-const getRoomsErrorMessage = () => {
-  switch (roomNumber.value) {
-    case oneRoom:
-      if (capacity.value !== oneGuest) {
-        return 'Только для 1 гостя.';
-      }
-      break;
-    case twoRooms:
-      if (capacity.value !== oneGuest && capacity.value !== twoGuests) {
-        return 'Только от 1 до 2 гостей';
-      }
-      break;
-    case threeRooms:
-      if (capacity.value !== oneGuest && capacity.value !== twoGuests && capacity.value !== threeGuests) {
-        return 'Только от 1 до 3 гостей';
-      }
-      break;
-    case manyRooms: {
-      if (capacity.value !== noGuests) {
-        return '100 комнат — не для гостей';
-      }
-      break;
-    }
-  }
-};
-
 const checkRooms = () => {
   switch (roomNumber.value) {
     case oneRoom:
@@ -68,6 +42,32 @@ const checkRooms = () => {
     }
   }
   return true;
+};
+
+const getRoomsErrorMessage = () => {
+  switch (roomNumber.value) {
+    case oneRoom:
+      if (capacity.value !== oneGuest) {
+        return 'Только для 1 гостя.';
+      }
+      break;
+    case twoRooms:
+      if (capacity.value !== oneGuest && capacity.value !== twoGuests) {
+        return 'Только от 1 до 2 гостей';
+      }
+      break;
+    case threeRooms:
+      if (capacity.value !== oneGuest && capacity.value !== twoGuests && capacity.value !== threeGuests) {
+        return 'Только от 1 до 3 гостей';
+      }
+      break;
+    case manyRooms: {
+      if (capacity.value !== noGuests) {
+        return '100 комнат — не для гостей';
+      }
+      break;
+    }
+  }
 };
 
 pristine.addValidator(formTitle, checkLength, 'От 30 до 100 символов.');
