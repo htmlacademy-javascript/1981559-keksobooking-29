@@ -95,9 +95,24 @@ const checkMinPrice = () => {
   return priceInput.value >= minPrice;
 };
 
+const getMinPriceErrorMessage = () => {
+  switch (housingType.value) {
+    case 'bungalow':
+      return 'Минимальная цена за ночь 0';
+    case 'flat':
+      return 'Минимальная цена за ночь 1 000';
+    case 'hotel':
+      return 'Минимальная цена за ночь 3 000';
+    case 'house':
+      return 'Минимальная цена за ночь 5 000';
+    case 'palace':
+      return 'Минимальная цена за ночь 10 000';
+  }
+};
+
 pristine.addValidator(formTitle, checkLength, 'От 30 до 100 символов.');
 pristine.addValidator(roomNumber, checkRooms, getRoomsErrorMessage);
 pristine.addValidator(timeOut, checkTime, 'Время заедзда должно соответствовать времени выезда.');
-pristine.addValidator(priceInput, checkMinPrice, '123');
+pristine.addValidator(priceInput, checkMinPrice, getMinPriceErrorMessage);
 
 export {pristine};
