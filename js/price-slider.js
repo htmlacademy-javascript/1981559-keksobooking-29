@@ -26,8 +26,6 @@ const addPriceSlider = () => {
   });
 };
 
-
 housingType.addEventListener('change', onHousingTypeChange);
-
 
 export {addPriceSlider};
