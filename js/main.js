@@ -19,6 +19,10 @@ priceInput.addEventListener('wheel', (evt) => {
 addPriceSlider();
 priceInput.value = '';
 
+adForm.addEventListener('reset', () => {
+  console.log('reset')
+})
+
 adForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const isValid = pristine.validate();
