@@ -26,7 +26,6 @@ priceInput.addEventListener('wheel', (evt) => {
 addPriceSlider();
 priceInput.value = '';
 
-const defaultImageToUpload = imageToUpload.cloneNode();
 const defaultHousingImage = housingImageWrapper.cloneNode();
 
 adForm.addEventListener('reset', () => {
@@ -34,10 +33,15 @@ adForm.addEventListener('reset', () => {
   pristine.reset();
   imageToUploadWrapper.innerHTML = '';
   imageToUploadWrapper.style.padding = '0 15px';
-  imageToUploadWrapper.appendChild(defaultImageToUpload);
+  const defaultElement = document.createElement('img');
+  defaultElement.src = 'img/muffin-grey.svg';
+  defaultElement.alt = 'Аватар пользователя';
+  defaultElement.width = 40;
+  defaultElement.height = 44;
+  imageToUploadWrapper.appendChild(defaultElement);
 
   const housingPhotos = housingImageContainer.querySelectorAll('.ad-form__photo');
-  housingPhotos.forEach(photo => {
+  housingPhotos.forEach((photo) => {
     photo.remove();
   });
   housingImageContainer.appendChild(defaultHousingImage);
