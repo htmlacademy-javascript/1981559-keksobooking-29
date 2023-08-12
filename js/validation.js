@@ -1,9 +1,12 @@
-import {adForm, formTitle, priceInput, roomNumber, capacity, housingType} from './variables.js';
+import {adForm, formTitle, priceInput, roomNumber, capacity, housingType, coordinatesOfAddress} from './variables.js';
 import {pristineDefaultConfig, TITLE_MAX_LENGTH, TITLE_MIN_LENGTH, numberOfGuests, numberOfRooms, minPriceValues} from './constants.js';
 const {oneRoom, twoRooms, threeRooms, manyRooms} = numberOfRooms;
 const {oneGuest, twoGuests, threeGuests, noGuests} = numberOfGuests;
 const {bungalow, flat, hotel, house, palace} = minPriceValues;
 
+coordinatesOfAddress.dataset.pristineRequiredMessage = 'Укажите адрес жилья красной меткой на карте.';
+coordinatesOfAddress.required = true;
+coordinatesOfAddress.setAttribute('readonly', 'true');
 formTitle.required = true;
 formTitle.dataset.pristineRequiredMessage = 'Обязательное текстовое поле.';
 priceInput.required = true;
