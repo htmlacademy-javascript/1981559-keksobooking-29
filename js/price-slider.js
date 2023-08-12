@@ -24,6 +24,11 @@ const addPriceSlider = () => {
   priceSliderContainer.noUiSlider.on('update', () => {
     priceInput.value = priceSliderContainer.noUiSlider.get();
   });
+  priceInput.placeholder = String(PRICE_DEFAULT);
+  priceInput.addEventListener('wheel', (evt) => {
+    evt.preventDefault();
+  });
+  priceInput.value = '';
 };
 
 const resetPriceSlider = () => {

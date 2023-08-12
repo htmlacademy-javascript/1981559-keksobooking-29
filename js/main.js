@@ -3,28 +3,21 @@ import {sendData} from './load-data.js';
 import {initMap} from './map.js';
 import {initUploadImage} from './image-upload.js';
 import {initTimeCheck} from './time-check.js';
-import {adForm, priceInput} from './variables.js';
+import {adForm} from './variables.js';
 import {pristine} from './validation.js';
 import {addPriceSlider} from './price-slider.js';
-import {PRICE_DEFAULT} from './constants.js';
 import {resetForm} from './reset-form.js';
 
 deactivateForms();
 initMap();
 initUploadImage();
 initTimeCheck();
-priceInput.placeholder = String(PRICE_DEFAULT);
-priceInput.addEventListener('wheel', (evt) => {
-  evt.preventDefault();
-});
 addPriceSlider();
-priceInput.value = '';
 
 adForm.addEventListener('reset', resetForm);
 adForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const isValid = pristine.validate();
-  //добавить ресет noUiSlider
   if (isValid) {
     console.log('ok');
   } else {
