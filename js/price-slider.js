@@ -26,6 +26,10 @@ const addPriceSlider = () => {
   });
 };
 
+const resetPriceSlider = () => {
+  priceSliderContainer.noUiSlider.reset();
+};
+
 housingType.addEventListener('change', onHousingTypeChange);
 
-export {addPriceSlider};
+export {addPriceSlider, resetPriceSlider};

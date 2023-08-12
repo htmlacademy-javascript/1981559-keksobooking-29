@@ -5,7 +5,7 @@ import {initUploadImage} from './image-upload.js';
 import {initTimeCheck} from './time-check.js';
 import {adForm, priceInput} from './variables.js';
 import {pristine} from './validation.js';
-import {addPriceSlider} from './price-slider.js';
+import {addPriceSlider, resetPriceSlider} from './price-slider.js';
 import {PRICE_DEFAULT} from './constants.js';
 
 deactivateForms();
@@ -20,8 +20,9 @@ addPriceSlider();
 priceInput.value = '';
 
 adForm.addEventListener('reset', () => {
-  console.log('reset')
-})
+  resetPriceSlider();
+  pristine.reset();
+});
 
 adForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
