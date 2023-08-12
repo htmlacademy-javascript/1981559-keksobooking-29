@@ -24,8 +24,8 @@ adForm.addEventListener('reset', () => {
   resetPriceSlider();
   pristine.reset();
   imageToUploadWrapper.innerHTML = '';
-  imageToUploadWrapper.appendChild(defaultImageToUpload);
   imageToUploadWrapper.style.padding = '0 15px';
+  imageToUploadWrapper.appendChild(defaultImageToUpload);
 });
 
 adForm.addEventListener('submit', (evt) => {
