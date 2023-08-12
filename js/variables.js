@@ -3,6 +3,9 @@ const coordinatesOfAddress = adForm.querySelector('#address');
 const uploadMapImageInput = adForm.querySelector('#avatar');
 const imageToUploadWrapper = adForm.querySelector('.ad-form-header__preview');
 const imageToUpload = imageToUploadWrapper.querySelector('.ad-form-header__preview img');
+const housingImageContainer = adForm.querySelector('.ad-form__photo-container');
+const housingImageWrapper = housingImageContainer.querySelector('.ad-form__photo');
+const imagesUploadInput = housingImageContainer.querySelector('#images');
 const submitButton = adForm.querySelector('.ad-form__submit');
 const formTitle = adForm.querySelector('#title');
 const priceInput = adForm.querySelector('#price');
@@ -32,5 +35,8 @@ export {
   timeOut,
   roomNumber,
   capacity,
-  imageToUploadWrapper
+  housingImageContainer,
+  imageToUploadWrapper,
+  housingImageWrapper,
+  imagesUploadInput
 };
