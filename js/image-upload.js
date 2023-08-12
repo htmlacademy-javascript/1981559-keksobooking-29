@@ -1,4 +1,4 @@
-import {uploadMapImageInput, imageToUploadWrapper, imageToUpload, housingImageContainer, housingImageWrapper, imagesUploadInput} from './variables.js';
+import {uploadMapImageInput, imageToUploadWrapper, housingImageContainer, housingImageWrapper, imagesUploadInput} from './variables.js';
 import {FILE_TYPES} from './constants.js';
 
 const initUploadImage = () => {
@@ -7,12 +7,13 @@ const initUploadImage = () => {
     const fileName = file.name.toLowerCase();
     const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
     if (matches) {
+      const newImageToUpload = imageToUploadWrapper.querySelector('.ad-form-header__preview img');
       imageToUploadWrapper.style.padding = '0';
       imageToUploadWrapper.style.flexShrink = '0';
       imageToUploadWrapper.style.overflow = 'hidden';
-      imageToUpload.width = 70;
-      imageToUpload.height = 70;
-      imageToUpload.src = URL.createObjectURL(file);
+      newImageToUpload.width = 70;
+      newImageToUpload.height = 70;
+      newImageToUpload.src = URL.createObjectURL(file);
     }
   };
 

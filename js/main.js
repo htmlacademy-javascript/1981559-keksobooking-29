@@ -3,7 +3,7 @@ import {sendData} from './load-data.js';
 import {initMap} from './map.js';
 import {initUploadImage} from './image-upload.js';
 import {initTimeCheck} from './time-check.js';
-import {adForm, priceInput} from './variables.js';
+import {adForm, imageToUpload, imageToUploadWrapper, priceInput} from './variables.js';
 import {pristine} from './validation.js';
 import {addPriceSlider, resetPriceSlider} from './price-slider.js';
 import {PRICE_DEFAULT} from './constants.js';
@@ -19,9 +19,13 @@ priceInput.addEventListener('wheel', (evt) => {
 addPriceSlider();
 priceInput.value = '';
 
+const defaultImageToUpload = imageToUpload.cloneNode();
 adForm.addEventListener('reset', () => {
   resetPriceSlider();
   pristine.reset();
+  imageToUploadWrapper.innerHTML = '';
+  imageToUploadWrapper.appendChild(defaultImageToUpload);
+  imageToUploadWrapper.style.padding = '0 15px';
 });
 
 adForm.addEventListener('submit', (evt) => {
