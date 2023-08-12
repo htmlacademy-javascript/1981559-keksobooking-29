@@ -1,4 +1,10 @@
-import {uploadMapImageInput, imageToUploadWrapper, housingImageContainer, housingImageWrapper, imagesUploadInput} from './variables.js';
+import {
+  uploadMapImageInput,
+  imageToUploadWrapper,
+  housingImageContainer,
+  housingImageWrapper,
+  imagesUploadInput,
+} from './variables.js';
 import {FILE_TYPES} from './constants.js';
 
 const initUploadImage = () => {
@@ -18,7 +24,9 @@ const initUploadImage = () => {
   };
 
   const uploadHousingImage = () => {
-    const isTheFirstImageWrapperEmpty = housingImageContainer.contains(housingImageWrapper);
+    const emptyDefaultHousingImageWrapper = housingImageContainer.querySelector('.ad-form__photo');
+    const imgElementForCheck = emptyDefaultHousingImageWrapper.querySelector('img');
+    const isTheFirstElementEmpty = imgElementForCheck === null;
     const file = imagesUploadInput.files[0];
     const fileName = file.name.toLowerCase();
     const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
@@ -26,8 +34,8 @@ const initUploadImage = () => {
       const imageFragment = document.createDocumentFragment();
       const newImageWrapper = housingImageWrapper.cloneNode();
       const imageElement = document.createElement('img');
-      if (isTheFirstImageWrapperEmpty) {
-        housingImageWrapper.remove();
+      if (isTheFirstElementEmpty) {
+        emptyDefaultHousingImageWrapper.remove();
       }
       imageElement.width = 70;
       imageElement.height = 70;
