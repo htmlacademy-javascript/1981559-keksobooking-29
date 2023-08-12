@@ -3,17 +3,11 @@ import {sendData} from './load-data.js';
 import {initMap} from './map.js';
 import {initUploadImage} from './image-upload.js';
 import {initTimeCheck} from './time-check.js';
-import {
-  adForm,
-  housingImageContainer,
-  housingImageWrapper,
-  imageToUpload,
-  imageToUploadWrapper,
-  priceInput
-} from './variables.js';
+import {adForm, priceInput} from './variables.js';
 import {pristine} from './validation.js';
-import {addPriceSlider, resetPriceSlider} from './price-slider.js';
+import {addPriceSlider} from './price-slider.js';
 import {PRICE_DEFAULT} from './constants.js';
+import {resetForm} from './reset-form.js';
 
 deactivateForms();
 initMap();
@@ -26,27 +20,7 @@ priceInput.addEventListener('wheel', (evt) => {
 addPriceSlider();
 priceInput.value = '';
 
-const defaultHousingImage = housingImageWrapper.cloneNode();
-
-adForm.addEventListener('reset', () => {
-  resetPriceSlider();
-  pristine.reset();
-  imageToUploadWrapper.innerHTML = '';
-  imageToUploadWrapper.style.padding = '0 15px';
-  const defaultElement = document.createElement('img');
-  defaultElement.src = 'img/muffin-grey.svg';
-  defaultElement.alt = 'Аватар пользователя';
-  defaultElement.width = 40;
-  defaultElement.height = 44;
-  imageToUploadWrapper.appendChild(defaultElement);
-
-  const housingPhotos = housingImageContainer.querySelectorAll('.ad-form__photo');
-  housingPhotos.forEach((photo) => {
-    photo.remove();
-  });
-  housingImageContainer.appendChild(defaultHousingImage);
-});
-
+adForm.addEventListener('reset', resetForm);
 adForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const isValid = pristine.validate();
