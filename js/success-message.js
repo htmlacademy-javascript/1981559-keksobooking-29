@@ -1,4 +1,4 @@
-import {successTemplate, successContainer, adForm} from './variables.js';
+import {successTemplate, successContainer, bodyElement} from './variables.js';
 import {isEscapeKey} from './util.js';
 
 const showSuccess = () => {
@@ -25,7 +25,7 @@ const showSuccess = () => {
     }
   };
   document.addEventListener('click', onOutsideSuccessContainerClick);
-  adForm.appendChild(successElement);
+  bodyElement.appendChild(successElement);
 };
 
 export {showSuccess};
