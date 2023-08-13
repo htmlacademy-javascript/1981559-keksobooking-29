@@ -21,6 +21,9 @@ const successTemplate = document.querySelector('#success')
   .content
   .querySelector('.success');
 const successContainer = successTemplate.querySelector('.success');
+const errorTemplate = document.querySelector('#error')
+  .content
+  .querySelector('.error');
 
 export {
   interactiveFormElements,
@@ -43,5 +46,6 @@ export {
   imagesUploadInput,
   bodyElement,
   successTemplate,
-  successContainer
+  successContainer,
+  errorTemplate
 };

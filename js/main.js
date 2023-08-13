@@ -9,6 +9,7 @@ import {addPriceSlider} from './price-slider.js';
 import {resetForm} from './reset-form.js';
 import {blockSubmitButton, unblockSubmitButton} from './submit-button.js';
 import {showSuccess} from './success-message.js';
+import {showError} from './error-message.js';
 
 deactivateForms();
 initMap();
@@ -36,9 +37,7 @@ adForm.addEventListener('submit', (evt) => {
       )
       .catch(
         (err) => {
-          // showError(err.message);
-          console.log('not ok');
-          console.log('err')
+          showError(err.message);
         }
       )
       .finally(unblockSubmitButton);
