@@ -26,7 +26,7 @@ const numberOfGuests = {
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 const TILE_LAYER = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const COPYRIGHT = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
-const ZOOM = 10;
+const ZOOM = 13;
 const SubmitButtonText = {
   IDLE: 'Опубликовать',
   SENDING: 'Опубликовываю...'

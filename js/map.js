@@ -12,8 +12,8 @@ const initMap = () => {
   };
 
   const startCoordinate = {
-    lat: 59.96831,
-    lng: 30.31748,
+    lat: 35.68172,
+    lng: 139.75392,
   };
 
   const map = L.map('map-canvas')
