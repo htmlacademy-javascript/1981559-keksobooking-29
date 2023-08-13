@@ -7,6 +7,7 @@ import {adForm} from './variables.js';
 import {pristine} from './validation.js';
 import {addPriceSlider} from './price-slider.js';
 import {resetForm} from './reset-form.js';
+import {blockSubmitButton, unblockSubmitButton} from './submit-button.js';
 
 deactivateForms();
 initMap();
@@ -20,24 +21,23 @@ adForm.addEventListener('submit', (evt) => {
   const isValid = pristine.validate();
   if (isValid) {
     console.log('ok');
+    blockSubmitButton();
+    sendData(new FormData(evt.target))
+      .then(
+        () => {
+          console.log('ok');
+          // showSuccess();
+        }
+      )
+      .catch(
+        (err) => {
+          // showError(err.message);
+          console.log('not ok');
+          console.log('err')
+        }
+      )
+      .finally(unblockSubmitButton);
   } else {
     console.log('not ok');
   }
-  // blockSubmitButton();
-  // sendData(new FormData(evt.target))
-  //   .then(
-  //     () => {
-  //       console.log('ok');
-  //       // showSuccess();
-  //     }
-  //   )
-  //   .catch(
-  //     () => {
-  //       console.log('not ok');
-  //     }
-  //     // (err) => {
-  //     //   showError(err.message);
-  //     // }
-  //   )
-    // .finally(unblockSubmitButton);
 });

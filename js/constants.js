@@ -55,7 +55,7 @@ const SubmitButtonText = {
 };
 const pristineDefaultConfig = {
   classTo: 'ad-form__element',
-  errorClass: 'ad-form__element--error',
+  errorClass: 'ad-form__element--invalid',
   successClass: 'ad-form__element--valid',
   errorTextParent: 'ad-form__element',
   errorTextTag: 'div',
