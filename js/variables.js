@@ -16,6 +16,10 @@ const roomNumber = adForm.querySelector('#room_number');
 const capacity = adForm.querySelector('#capacity');
 const mapForm = document.querySelector('.map__filters');
 const interactiveFormElements = document.querySelectorAll('select, fieldset');
+const successTemplate = document.querySelector('#success')
+  .content
+  .querySelector('.success');
+const successContainer = successTemplate.querySelector('.success');
 
 export {
   interactiveFormElements,
@@ -35,5 +39,7 @@ export {
   housingImageContainer,
   imageToUploadWrapper,
   housingImageWrapper,
-  imagesUploadInput
+  imagesUploadInput,
+  successTemplate,
+  successContainer
 };
