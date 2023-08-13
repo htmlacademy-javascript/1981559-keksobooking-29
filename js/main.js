@@ -25,8 +25,14 @@ adForm.addEventListener('submit', (evt) => {
     sendData(new FormData(evt.target))
       .then(
         () => {
-          console.log('ok');
+          console.log('ok in');
           // showSuccess();
+        }
+      )
+      .then(
+        () => {
+          resetForm();
+          adForm.reset();
         }
       )
       .catch(
