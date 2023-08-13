@@ -1,38 +1,25 @@
 import {activateForms} from './form-load-status.js';
-import {TILE_LAYER, COPYRIGHT, ZOOM,} from './constants.js';
+import {TILE_LAYER, COPYRIGHT, ZOOM, iconConfig, startCoordinates} from './constants.js';
 import {coordinatesOfAddress} from './variables.js';
 
 const initMap = () => {
-  const iconConfig = {
-    url: './img/main-pin.svg',
-    width: 52,
-    height: 52,
-    anchorX: 26,
-    anchorY: 52,
-  };
-
-  const startCoordinate = {
-    lat: 35.68172,
-    lng: 139.75392,
-  };
-
   const map = L.map('map-canvas')
     .on('load', () => {
       activateForms();
     })
-    .setView(startCoordinate, ZOOM);
+    .setView(startCoordinates, ZOOM);
 
   L.tileLayer(TILE_LAYER, {
     attribution: COPYRIGHT
   }).addTo(map);
 
   const mainPinIcon = L.icon({
-    iconUrl: iconConfig.url,
-    iconSize: [iconConfig.width, iconConfig.height],
-    iconAnchor: [iconConfig.anchorX, iconConfig.anchorY],
+    iconUrl: iconConfig.main.url,
+    iconSize: [iconConfig.main.width, iconConfig.main.height],
+    iconAnchor: [iconConfig.main.anchorX, iconConfig.main.anchorY],
   });
 
-  const mainPinMarker = L.marker(startCoordinate, {
+  const mainPinMarker = L.marker(startCoordinates, {
     draggable: true,
     icon: mainPinIcon,
   });
@@ -41,7 +28,7 @@ const initMap = () => {
 
   mainPinMarker.on('moveend', (evt) => {
     const {lat, lng} = evt.target.getLatLng();
-    coordinatesOfAddress.value = `${lat} ${lng}`;
+    coordinatesOfAddress.value = `${lat.toFixed(5)} ${lng.toFixed(5)}`;
   });
 };
 

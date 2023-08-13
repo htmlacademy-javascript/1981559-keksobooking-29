@@ -23,6 +23,28 @@ const numberOfGuests = {
   'threeGuests' : '3',
   'noGuests' : '0'
 };
+const iconConfig = {
+  main: {
+    url: './img/main-pin.svg',
+    width: 52,
+    height: 52,
+    anchorX: 26,
+    anchorY: 52,
+  },
+
+  default: {
+    url: './img/pin.svg',
+    width: 40,
+    height: 40,
+    anchorX: 20,
+    anchorY: 40,
+  }
+};
+
+const startCoordinates = {
+  lat: 35.68172,
+  lng: 139.75392,
+};
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 const TILE_LAYER = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const COPYRIGHT = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
@@ -72,5 +94,7 @@ export {
   Method,
   ErrorText,
   numberOfRooms,
-  numberOfGuests
+  numberOfGuests,
+  iconConfig,
+  startCoordinates
 };
