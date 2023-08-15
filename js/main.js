@@ -3,7 +3,7 @@ import {initMap} from './map.js';
 import {initUploadImage} from './image-upload.js';
 import {initTimeCheck} from './time-check.js';
 import {addPriceSlider} from './price-slider.js';
-import {getData} from "./load-data.js";
+import {getData} from './load-data.js';
 
 deactivateForms();
 initMap();
