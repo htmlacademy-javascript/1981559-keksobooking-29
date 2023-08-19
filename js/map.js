@@ -105,6 +105,7 @@ const initMap = () => {
         marker
           .addTo(map)
           .bindPopup(createCustomPopup(card));
+        //Сделать так, чтобы при клике создавалась карточка, а не сарзу все
       });
     });
 };
