@@ -24,6 +24,9 @@ const successContainer = successTemplate.querySelector('.success');
 const errorTemplate = document.querySelector('#error')
   .content
   .querySelector('.error');
+const cardTemplate = document.querySelector('#card')
+  .content
+  .querySelector('.popup');
 
 export {
   interactiveFormElements,
@@ -47,5 +50,6 @@ export {
   bodyElement,
   successTemplate,
   successContainer,
-  errorTemplate
+  errorTemplate,
+  cardTemplate
 };

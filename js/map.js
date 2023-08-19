@@ -1,6 +1,6 @@
 import {activateForms} from './form-load-status.js';
 import {TILE_LAYER, COPYRIGHT, ZOOM, iconConfig, startCoordinates} from './constants.js';
-import {coordinatesOfAddress} from './variables.js';
+import {coordinatesOfAddress, cardTemplate} from './variables.js';
 import {getData} from './load-data.js';
 
 const initMap = () => {
@@ -33,6 +33,11 @@ const initMap = () => {
 
   mainPinMarker.addTo(map);
 
+  const createCustomPopup = () => {
+    const popupElement = cardTemplate.cloneNode(true);
+    return popupElement;
+  };
+
   mainPinMarker.on('moveend', (evt) => {
     const {lat, lng} = evt.target.getLatLng();
     coordinatesOfAddress.value = `${lat.toFixed(5)} ${lng.toFixed(5)}`;
@@ -52,7 +57,9 @@ const initMap = () => {
         },
         );
 
-        marker.addTo(map);
+        marker
+          .addTo(map)
+          .bindPopup(createCustomPopup);
       });
     });
 };
