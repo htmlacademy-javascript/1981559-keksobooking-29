@@ -1,6 +1,7 @@
 import {activateForms} from './form-load-status.js';
 import {TILE_LAYER, COPYRIGHT, ZOOM, iconConfig, startCoordinates} from './constants.js';
 import {coordinatesOfAddress} from './variables.js';
+import {getData} from './load-data.js';
 
 const initMap = () => {
   const map = L.map('map-canvas')
@@ -19,6 +20,12 @@ const initMap = () => {
     iconAnchor: [iconConfig.main.anchorX, iconConfig.main.anchorY],
   });
 
+  const icon = L.icon({
+    iconUrl: iconConfig.default.url,
+    iconSize: [iconConfig.default.width, iconConfig.default.height],
+    iconAnchor: [iconConfig.default.anchorX, iconConfig.default.anchorY],
+  });
+
   const mainPinMarker = L.marker(startCoordinates, {
     draggable: true,
     icon: mainPinIcon,
@@ -30,6 +37,24 @@ const initMap = () => {
     const {lat, lng} = evt.target.getLatLng();
     coordinatesOfAddress.value = `${lat.toFixed(5)} ${lng.toFixed(5)}`;
   });
+
+  getData()
+    .then((someArr) => {
+      someArr.forEach(({location}) => {
+        const lat = location.lat;
+        const lng = location.lng;
+        const marker = L.marker({
+          lat,
+          lng,
+        },
+        {
+          icon,
+        },
+        );
+
+        marker.addTo(map);
+      });
+    });
 };
 
 export {initMap};
