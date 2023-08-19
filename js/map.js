@@ -52,6 +52,7 @@ const initMap = () => {
     const popupPriceSpan = popupPrice.querySelector('span').cloneNode(true);
     const popupType = popupElement.querySelector('.popup__type');
     const popupCapacity = popupElement.querySelector('.popup__text--capacity');
+    const popupTime = popupElement.querySelector('.popup__text--time');
     const {author, offer} = element;
     const {address, checkin, checkout, description, guests, price, rooms, title, type} = offer;
     popupAvatar.src = author.avatar;
@@ -61,6 +62,7 @@ const initMap = () => {
     popupPrice.appendChild(popupPriceSpan);
     popupType.textContent = typeOfHousingTranslate[type];
     popupCapacity.textContent = `${rooms} ${pluralize(rooms, roomsWords)} для ${guests} ${pluralize(guests, guestsWords)}`;
+    popupTime.textContent = `Заезд после ${checkin}, выезд до ${checkout}`;
     // there is an undefined in description
     return popupElement;
   };
