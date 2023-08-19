@@ -45,9 +45,9 @@ const initMap = () => {
 
   getData()
     .then((someArr) => {
-      someArr.forEach(({location}) => {
-        const lat = location.lat;
-        const lng = location.lng;
+      someArr.forEach((card) => {
+        const {location} = card;
+        const {lat, lng} = location;
         const marker = L.marker({
           lat,
           lng,
