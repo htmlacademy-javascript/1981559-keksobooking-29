@@ -11,6 +11,13 @@ const minPriceValues = {
   'house' : 5000,
   'palace' : 10000
 };
+const typeOfHousingTranslate = {
+  'bungalow' : 'Бунгало',
+  'flat' : 'Квартира',
+  'hotel' : 'Отель',
+  'house' : 'Дом',
+  'palace' : 'Дворец'
+};
 const numberOfRooms = {
   'oneRoom' : '1',
   'twoRooms' : '2',
@@ -96,5 +103,6 @@ export {
   numberOfRooms,
   numberOfGuests,
   iconConfig,
-  startCoordinates
+  startCoordinates,
+  typeOfHousingTranslate
 };

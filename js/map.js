@@ -1,5 +1,5 @@
 import {activateForms} from './form-load-status.js';
-import {TILE_LAYER, COPYRIGHT, ZOOM, iconConfig, startCoordinates} from './constants.js';
+import {TILE_LAYER, COPYRIGHT, ZOOM, iconConfig, startCoordinates, typeOfHousingTranslate} from './constants.js';
 import {coordinatesOfAddress, cardTemplate} from './variables.js';
 import {getData} from './load-data.js';
 
@@ -40,6 +40,7 @@ const initMap = () => {
     const popupAddress = popupElement.querySelector('.popup__text--address');
     const popupPrice = popupElement.querySelector('.popup__text--price');
     const popupPriceSpan = popupPrice.querySelector('span').cloneNode(true);
+    const popupType = popupElement.querySelector('.popup__type');
     const {author, offer} = element;
     const {address, checkin, checkout, description, guests, price, rooms, title, type} = offer;
     popupAvatar.src = author.avatar;
@@ -47,6 +48,7 @@ const initMap = () => {
     popupAddress.textContent = address;
     popupPrice.textContent = `${price.toLocaleString('ru-RU')} `;
     popupPrice.appendChild(popupPriceSpan);
+    popupType.textContent = typeOfHousingTranslate[type];
     // there is an undefined in description
     return popupElement;
   };
