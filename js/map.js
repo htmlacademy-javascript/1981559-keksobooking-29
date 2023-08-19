@@ -54,8 +54,9 @@ const initMap = () => {
     const popupCapacity = popupElement.querySelector('.popup__text--capacity');
     const popupTime = popupElement.querySelector('.popup__text--time');
     const popupDescription = popupElement.querySelector('.popup__description');
+    const popupFeatures = popupElement.querySelector('.popup__features');
     const {author, offer} = element;
-    const {address, checkin, checkout, description, guests, price, rooms, title, type} = offer;
+    const {address, checkin, checkout, description, guests, price, rooms, title, type, features} = offer;
     popupAvatar.src = author.avatar;
     popupTitle.textContent = title;
     popupAddress.textContent = address;
@@ -68,6 +69,16 @@ const initMap = () => {
       popupDescription.textContent = description;
     } else {
       popupDescription.textContent = '';
+    }
+    popupFeatures.innerHTML = '';
+    if (features !== undefined) {
+      const newFragment = document.createDocumentFragment();
+      features.forEach((feature) => {
+        const newItem = document.createElement('li');
+        newItem.className = `popup__feature popup__feature--${feature}`;
+        newFragment.appendChild(newItem);
+      });
+      popupFeatures.appendChild(newFragment);
     }
     return popupElement;
   };
