@@ -33,8 +33,21 @@ const initMap = () => {
 
   mainPinMarker.addTo(map);
 
-  const createCustomPopup = () => {
+  const createCustomPopup = (element) => {
     const popupElement = cardTemplate.cloneNode(true);
+    const popupAvatar = popupElement.querySelector('.popup__avatar');
+    const popupTitle = popupElement.querySelector('.popup__title');
+    const popupAddress = popupElement.querySelector('.popup__text--address');
+    const popupPrice = popupElement.querySelector('.popup__text--price');
+    const popupPriceSpan = popupPrice.querySelector('span').cloneNode(true);
+    const {author, offer} = element;
+    const {address, checkin, checkout, description, guests, price, rooms, title, type} = offer;
+    popupAvatar.src = author.avatar;
+    popupTitle.textContent = title;
+    popupAddress.textContent = address;
+    popupPrice.textContent = price;
+    popupPrice.appendChild(popupPriceSpan);
+    // there is an undefined in description
     return popupElement;
   };
 
@@ -59,7 +72,7 @@ const initMap = () => {
 
         marker
           .addTo(map)
-          .bindPopup(createCustomPopup);
+          .bindPopup(createCustomPopup(card));
       });
     });
 };
