@@ -53,7 +53,7 @@ const initMap = () => {
     const popupType = popupElement.querySelector('.popup__type');
     const popupCapacity = popupElement.querySelector('.popup__text--capacity');
     const popupTime = popupElement.querySelector('.popup__text--time');
-    const popupDescritption = popupElement.querySelector('.popup__description');
+    const popupDescription = popupElement.querySelector('.popup__description');
     const {author, offer} = element;
     const {address, checkin, checkout, description, guests, price, rooms, title, type} = offer;
     popupAvatar.src = author.avatar;
@@ -65,9 +65,9 @@ const initMap = () => {
     popupCapacity.textContent = `${rooms} ${pluralize(rooms, roomsWords)} для ${guests} ${pluralize(guests, guestsWords)}`;
     popupTime.textContent = `Заезд после ${checkin}, выезд до ${checkout}`;
     if (description !== undefined) {
-      popupDescritption.textContent = description;
+      popupDescription.textContent = description;
     } else {
-      popupDescritption.textContent = '';
+      popupDescription.textContent = '';
     }
     return popupElement;
   };
