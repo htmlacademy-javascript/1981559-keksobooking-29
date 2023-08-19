@@ -45,7 +45,7 @@ const initMap = () => {
     popupAvatar.src = author.avatar;
     popupTitle.textContent = title;
     popupAddress.textContent = address;
-    popupPrice.textContent = price;
+    popupPrice.textContent = `${price.toLocaleString('ru-RU')} `;
     popupPrice.appendChild(popupPriceSpan);
     // there is an undefined in description
     return popupElement;
