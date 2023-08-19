@@ -55,8 +55,10 @@ const initMap = () => {
     const popupTime = popupElement.querySelector('.popup__text--time');
     const popupDescription = popupElement.querySelector('.popup__description');
     const popupFeatures = popupElement.querySelector('.popup__features');
+    const popupPhotosContainer = popupElement.querySelector('.popup__photos');
+    const popupPhotoTemplateCopy = popupPhotosContainer.querySelector('img').cloneNode();
     const {author, offer} = element;
-    const {address, checkin, checkout, description, guests, price, rooms, title, type, features} = offer;
+    const {address, checkin, checkout, description, guests, price, rooms, title, type, features, photos} = offer;
     popupAvatar.src = author.avatar;
     popupTitle.textContent = title;
     popupAddress.textContent = address;
@@ -79,6 +81,16 @@ const initMap = () => {
         newFragment.appendChild(newItem);
       });
       popupFeatures.appendChild(newFragment);
+    }
+    popupPhotosContainer.innerHTML = '';
+    if (photos !== undefined) {
+      const newFragment = document.createDocumentFragment();
+      photos.forEach((photo) => {
+        const newPhoto = popupPhotoTemplateCopy.cloneNode();
+        newPhoto.src = photo;
+        newFragment.appendChild(newPhoto);
+      });
+      popupPhotosContainer.appendChild(newFragment);
     }
     return popupElement;
   };
