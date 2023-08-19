@@ -53,6 +53,8 @@ const startCoordinates = {
   lng: 139.75392,
 };
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];
+const roomsWords = ['комната', 'комнаты', 'комнат'];
+const guestsWords = ['гостя', 'гостей', 'гостей'];
 const TILE_LAYER = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const COPYRIGHT = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 const ZOOM = 13;
@@ -104,5 +106,7 @@ export {
   numberOfGuests,
   iconConfig,
   startCoordinates,
-  typeOfHousingTranslate
+  typeOfHousingTranslate,
+  roomsWords,
+  guestsWords
 };

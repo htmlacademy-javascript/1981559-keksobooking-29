@@ -1,7 +1,17 @@
 import {activateForms} from './form-load-status.js';
-import {TILE_LAYER, COPYRIGHT, ZOOM, iconConfig, startCoordinates, typeOfHousingTranslate} from './constants.js';
 import {coordinatesOfAddress, cardTemplate} from './variables.js';
 import {getData} from './load-data.js';
+import {pluralize} from './util.js';
+import {
+  TILE_LAYER,
+  COPYRIGHT,
+  ZOOM,
+  iconConfig,
+  startCoordinates,
+  typeOfHousingTranslate,
+  roomsWords,
+  guestsWords
+} from './constants.js';
 
 const initMap = () => {
   const map = L.map('map-canvas')
@@ -41,6 +51,7 @@ const initMap = () => {
     const popupPrice = popupElement.querySelector('.popup__text--price');
     const popupPriceSpan = popupPrice.querySelector('span').cloneNode(true);
     const popupType = popupElement.querySelector('.popup__type');
+    const popupCapacity = popupElement.querySelector('.popup__text--capacity');
     const {author, offer} = element;
     const {address, checkin, checkout, description, guests, price, rooms, title, type} = offer;
     popupAvatar.src = author.avatar;
@@ -49,6 +60,7 @@ const initMap = () => {
     popupPrice.textContent = `${price.toLocaleString('ru-RU')} `;
     popupPrice.appendChild(popupPriceSpan);
     popupType.textContent = typeOfHousingTranslate[type];
+    popupCapacity.textContent = `${rooms} ${pluralize(rooms, roomsWords)} для ${guests} ${pluralize(guests, guestsWords)}`;
     // there is an undefined in description
     return popupElement;
   };
