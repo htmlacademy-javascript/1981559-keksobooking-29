@@ -94,8 +94,23 @@ const initMap = () => {
           }
         }
 
-        console.log(mapOfFilterElements)
-        const filteredMarkers = receivedData.filter((mapMarker) => mapMarker.offer.type === 'hotel');
+        /*
+        Если значение селекта 1 равно значению данных от мапа филтра то true и идет дальше иначе false и начинает
+        перебор следующего объекта.
+        Если значение селекта равно any то возвращай true
+        Еще надо проверять значения вайфая
+         */
+
+        console.log(mapOfFilterElements.get('housing-type'));
+        const filteredMarkers = receivedData.filter((mapMarker) => {
+          if (mapOfFilterElements.get('housing-type') === 'any') {
+            return true;
+          }
+          if (mapOfFilterElements.get('housing-type') === mapMarker.offer.type) {
+            return true;
+          }
+          return false;
+        });
         createMarkers(filteredMarkers);
         // const checkedCheckboxes = mapHousingFeatures.querySelectorAll('input:checked');
         // const checkedValues = Array.from(checkedCheckboxes).map((input) => input.value);
