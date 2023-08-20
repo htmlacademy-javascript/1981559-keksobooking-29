@@ -45,24 +45,28 @@ const initMap = () => {
     coordinatesOfAddress.value = `${lat.toFixed(5)} ${lng.toFixed(5)}`;
   });
 
-  getData()
-    .then((someArr) => {
-      someArr.forEach((card) => {
-        const {location} = card;
-        const {lat, lng} = location;
-        const marker = L.marker({
+  const createMarkers = (data) => {
+    data.forEach((card) => {
+      const {location} = card;
+      const {lat, lng} = location;
+      const marker = L.marker(
+        {
           lat,
           lng,
         },
         {
-          icon,
+          icon
         },
-        );
+      );
+      marker
+        .addTo(map)
+        .bindPopup(createPopup(card));
+    });
+  };
 
-        marker
-          .addTo(map)
-          .bindPopup(createPopup(card));
-      });
+  getData()
+    .then((receivedData) => {
+      createMarkers(receivedData);
     });
 };
 
