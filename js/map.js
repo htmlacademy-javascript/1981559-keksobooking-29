@@ -81,11 +81,12 @@ const initMap = () => {
     .then((receivedData) => {
       createMarkers(receivedData);
       mapForm.addEventListener('change', () => {
-        // markerGroup.clearLayers();
-        // console.log(receivedData.at(0));
-        const checkedCheckboxes = mapHousingFeatures.querySelectorAll('input:checked');
-        const checkedValues = Array.from(checkedCheckboxes).map((input) => input.value);
-        console.log(checkedValues);
+        markerGroup.clearLayers();
+        const filteredMarkers = receivedData.filter((mapMarker) => mapMarker.offer.type === 'hotel');
+        createMarkers(filteredMarkers);
+        // const checkedCheckboxes = mapHousingFeatures.querySelectorAll('input:checked');
+        // const checkedValues = Array.from(checkedCheckboxes).map((input) => input.value);
+        // console.log(checkedValues);
       });
     });
 };
