@@ -1,3 +1,12 @@
+const bodyElement = document.querySelector('body');
+
+const mapForm = document.querySelector('.map__filters');
+const mapHousingType = mapForm.querySelector('#housing-type');
+const mapHousingPrice = mapForm.querySelector('#housing-price');
+const mapHousingRooms = mapForm.querySelector('#housing-rooms');
+const mapHousingGuests = mapForm.querySelector('#housing-guests');
+const mapHousingFeatures = mapForm.querySelector('#housing-features');
+
 const adForm = document.querySelector('.ad-form');
 const coordinatesOfAddress = adForm.querySelector('#address');
 const uploadMapImageInput = adForm.querySelector('#avatar');
@@ -14,9 +23,9 @@ const timeIn = adForm.querySelector('#timein');
 const timeOut = adForm.querySelector('#timeout');
 const roomNumber = adForm.querySelector('#room_number');
 const capacity = adForm.querySelector('#capacity');
-const mapForm = document.querySelector('.map__filters');
+
 const interactiveFormElements = document.querySelectorAll('select, fieldset');
-const bodyElement = document.querySelector('body');
+
 const successTemplate = document.querySelector('#success')
   .content
   .querySelector('.success');
@@ -51,5 +60,10 @@ export {
   successTemplate,
   successContainer,
   errorTemplate,
-  cardTemplate
+  cardTemplate,
+  mapHousingType,
+  mapHousingPrice,
+  mapHousingRooms,
+  mapHousingGuests,
+  mapHousingFeatures
 };

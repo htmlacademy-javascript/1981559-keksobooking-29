@@ -1,5 +1,13 @@
 import {activateForms} from './form-load-status.js';
-import {coordinatesOfAddress} from './variables.js';
+import {
+  coordinatesOfAddress,
+  mapForm,
+  mapHousingType,
+  mapHousingPrice,
+  mapHousingRooms,
+  mapHousingGuests,
+  mapHousingFeatures
+} from './variables.js';
 import {getData} from './load-data.js';
 import {createPopup} from './create-popup.js';
 import {
@@ -72,6 +80,12 @@ const initMap = () => {
   getData()
     .then((receivedData) => {
       createMarkers(receivedData);
+      mapForm.addEventListener('change', () => {
+        // markerGroup.clearLayers();
+        // console.log(receivedData.at(0));
+        console.log(mapHousingType.value)
+        console.log('change');
+      });
     });
 };
 
