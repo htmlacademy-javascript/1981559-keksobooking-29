@@ -45,6 +45,7 @@ const initMap = () => {
     coordinatesOfAddress.value = `${lat.toFixed(5)} ${lng.toFixed(5)}`;
   });
 
+  const markerGroup = L.layerGroup().addTo(map);
   const createMarkers = (data) => {
     data.forEach((card) => {
       const {location} = card;
@@ -59,10 +60,14 @@ const initMap = () => {
         },
       );
       marker
-        .addTo(map)
+        .addTo(markerGroup)
         .bindPopup(createPopup(card));
     });
   };
+
+  // const someFunc = () => {
+  //   markerGroup.clearLayers();
+  // };
 
   getData()
     .then((receivedData) => {
