@@ -80,26 +80,21 @@ const initMap = () => {
   getData()
     .then((receivedData) => {
       createMarkers(receivedData);
-      /*
-      Пройтись по всем селектам
-      получить их id
-      получить их value
-      венруть объект с данными
-       */
-
-      for (const element of mapForm) {
-        if (element.tagName === 'SELECT') {
-          console.log(element.id)
-          console.log(element.value)
-        }
-        if (element.tagName === 'INPUT') {
-          console.log(element.id)
-          console.log(element.checked)
-        }
-      }
 
       mapForm.addEventListener('change', () => {
         markerGroup.clearLayers();
+        const mapOfFilterElements = new Map();
+
+        for (const element of mapForm) {
+          if (element.tagName === 'SELECT') {
+            mapOfFilterElements.set(element.id, element.value);
+          }
+          if (element.tagName === 'INPUT') {
+            mapOfFilterElements.set(element.id, element.checked);
+          }
+        }
+
+        console.log(mapOfFilterElements)
         const filteredMarkers = receivedData.filter((mapMarker) => mapMarker.offer.type === 'hotel');
         createMarkers(filteredMarkers);
         // const checkedCheckboxes = mapHousingFeatures.querySelectorAll('input:checked');
