@@ -83,8 +83,9 @@ const initMap = () => {
       mapForm.addEventListener('change', () => {
         // markerGroup.clearLayers();
         // console.log(receivedData.at(0));
-        console.log(mapHousingType.value)
-        console.log('change');
+        const checkedCheckboxes = mapHousingFeatures.querySelectorAll('input:checked');
+        const checkedValues = Array.from(checkedCheckboxes).map((input) => input.value);
+        console.log(checkedValues);
       });
     });
 };
