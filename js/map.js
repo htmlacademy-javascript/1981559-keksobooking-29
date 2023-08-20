@@ -80,6 +80,24 @@ const initMap = () => {
   getData()
     .then((receivedData) => {
       createMarkers(receivedData);
+      /*
+      Пройтись по всем селектам
+      получить их id
+      получить их value
+      венруть объект с данными
+       */
+
+      for (const element of mapForm) {
+        if (element.tagName === 'SELECT') {
+          console.log(element.id)
+          console.log(element.value)
+        }
+        if (element.tagName === 'INPUT') {
+          console.log(element.id)
+          console.log(element.checked)
+        }
+      }
+
       mapForm.addEventListener('change', () => {
         markerGroup.clearLayers();
         const filteredMarkers = receivedData.filter((mapMarker) => mapMarker.offer.type === 'hotel');
