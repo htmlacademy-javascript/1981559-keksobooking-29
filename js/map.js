@@ -74,39 +74,81 @@ const initMap = () => {
       createMarkers(receivedData);
 
       mapForm.addEventListener('change', () => {
+        const housingFeaturesContainer = mapForm.querySelector('#housing-features');
+        const housingFeatures = housingFeaturesContainer.querySelectorAll('input');
+        let filteredData = receivedData;
         markerGroup.clearLayers();
-        const mapOfFilterElements = new Map();
 
-        for (const element of mapForm) {
-          if (element.tagName === 'SELECT') {
-            mapOfFilterElements.set(element.id, element.value);
-          }
-          if (element.tagName === 'INPUT') {
-            mapOfFilterElements.set(element.id, element.checked);
+        const getLastFeatureName = (string) => {
+          const wordToRemoveLength = string.split('-')[0].length + 1;
+          return string.slice(wordToRemoveLength);
+        };
+
+        for (const element of housingFeatures) {
+          if (element.checked === true) {
+            filteredData = filteredData.filter((mapMarker) => {
+              const featureAvailability = mapMarker.offer.features;
+              return (featureAvailability !== undefined && featureAvailability.includes(getLastFeatureName(element.id)));
+            });
           }
         }
 
-        /*
-        Если значение селекта 1 равно значению данных от мапа филтра то true и идет дальше иначе false и начинает
-        перебор следующего объекта.
-        Если значение селекта равно any то возвращай true
-        Еще надо проверять значения вайфая
-         */
+        // if (wiFiInput.checked === true) {
+        //   filteredData = filteredData.filter((mapMarker) => {
+        //     const featureAvailability = mapMarker.offer.features;
+        //     return (featureAvailability !== undefined && featureAvailability.includes('wifi'));
+        //   });
+        // }
+        //
+        // if (wiFiDishwasher.checked === true) {
+        //   filteredData = filteredData.filter((mapMarker) => {
+        //     const featureAvailability = mapMarker.offer.features;
+        //     return (featureAvailability !== undefined && featureAvailability.includes('dishwasher'));
+        //   });
+        // }
+        //
+        // if (wiFiParking.checked === true) {
+        //   filteredData = filteredData.filter((mapMarker) => {
+        //     const featureAvailability = mapMarker.offer.features;
+        //     return (featureAvailability !== undefined && featureAvailability.includes('parking'));
+        //   });
+        // }
 
-        console.log(mapOfFilterElements);
-        const filteredMarkers = receivedData.filter((mapMarker) => {
-          if (mapOfFilterElements.get('housing-type') === 'any') {
-            return true;
-          }
-          if (mapOfFilterElements.get('housing-type') === mapMarker.offer.type) {
-            return true;
-          }
-          return false;
-        });
-        createMarkers(filteredMarkers);
-        // const checkedCheckboxes = mapHousingFeatures.querySelectorAll('input:checked');
-        // const checkedValues = Array.from(checkedCheckboxes).map((input) => input.value);
-        // console.log(checkedValues);
+
+        createMarkers(filteredData);
+
+        // console.log(wiFiInput.checked);
+        // const mapOfFilterElements = new Map();
+        //
+        // for (const element of mapForm) {
+        //   if (element.tagName === 'SELECT') {
+        //     mapOfFilterElements.set(element.id, element.value);
+        //   }
+        //   if (element.tagName === 'INPUT') {
+        //     mapOfFilterElements.set(element.id, element.checked);
+        //   }
+        // }
+        // /*
+        // Если значение селекта 1 равно значению данных от мапа филтра то true и идет дальше иначе false и начинает
+        // перебор следующего объекта.
+        // Если значение селекта равно any то возвращай true
+        // Еще надо проверять значения вайфая
+        //  */
+        //
+        // // const filteredMarkers = receivedData.filter((mapMarker) => {
+        // //   if (mapOfFilterElements.get('housing-type') === 'any') {
+        // //     return true;
+        // //   }
+        // //   return mapOfFilterElements.get('housing-type') === mapMarker.offer.type;
+        // // }
+        // const filteredMarkers = receivedData.filter((mapMarker) => {
+        //
+        //   return mapOfFilterElements.get('housing-type') === mapMarker.offer.type;
+        // });
+        // createMarkers(filteredMarkers);
+        // // const checkedCheckboxes = mapHousingFeatures.querySelectorAll('input:checked');
+        // // const checkedValues = Array.from(checkedCheckboxes).map((input) => input.value);
+        // // console.log(checkedValues);
       });
     });
 };
