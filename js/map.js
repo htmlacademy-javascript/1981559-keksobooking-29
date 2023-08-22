@@ -78,7 +78,8 @@ const initMap = () => {
         };
 
         for (const element of housingFeatures) {
-          if (element.checked === true) {
+          const isElementChecked = element.checked === true;
+          if (isElementChecked) {
             filteredData = filteredData.filter((mapMarker) => {
               const featureAvailability = mapMarker.offer.features;
               if (featureAvailability !== undefined) {
