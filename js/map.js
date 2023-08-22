@@ -4,7 +4,8 @@ import {
   mapForm,
   mapHousingType,
   mapHousingPrice,
-  housingFeaturesContainer
+  housingFeaturesContainer,
+  mapHousingRooms
 } from './variables.js';
 import {getData} from './load-data.js';
 import {createPopup} from './create-popup.js';
@@ -108,6 +109,11 @@ const initMap = () => {
             }
           });
         }
+
+        if (mapHousingRooms.value !== 'any') {
+          filteredData = filteredData.filter((value) => Number(mapHousingRooms.value) === value.offer.rooms);
+        }
+
         createMarkers(filteredData);
       });
     });
