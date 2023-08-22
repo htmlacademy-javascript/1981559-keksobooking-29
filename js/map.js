@@ -90,40 +90,25 @@ const initMap = () => {
         }
 
         const mapHousingType = mapForm.querySelector('#housing-type');
+        const mapHousingPrice = mapForm.querySelector('#housing-price');
 
         if (mapHousingType.value !== 'any') {
           filteredData = filteredData.filter((value) => mapHousingType.value === value.offer.type);
         }
 
+        if (mapHousingPrice.value !== 'any') {
+          filteredData = filteredData.filter((value) => {
+            switch (mapHousingPrice.value) {
+              case 'low':
+                return value.offer.price <= 10000;
+              case 'middle':
+                return value.offer.price >= 10000 && value.offer.price <= 50000;
+              case 'high':
+                return value.offer.price >= 50000;
+            }
+          });
+        }
         createMarkers(filteredData);
-
-        // console.log(wiFiInput.checked);
-        // const mapOfFilterElements = new Map();
-        //
-        // for (const element of mapForm) {
-        //   if (element.tagName === 'SELECT') {
-        //     mapOfFilterElements.set(element.id, element.value);
-        //   }
-        //   if (element.tagName === 'INPUT') {
-        //     mapOfFilterElements.set(element.id, element.checked);
-        //   }
-        // }
-        // /*
-        //
-        // // const filteredMarkers = receivedData.filter((mapMarker) => {
-        // //   if (mapOfFilterElements.get('housing-type') === 'any') {
-        // //     return true;
-        // //   }
-        // //   return mapOfFilterElements.get('housing-type') === mapMarker.offer.type;
-        // // }
-        // const filteredMarkers = receivedData.filter((mapMarker) => {
-        //
-        //   return mapOfFilterElements.get('housing-type') === mapMarker.offer.type;
-        // });
-        // createMarkers(filteredMarkers);
-        // // const checkedCheckboxes = mapHousingFeatures.querySelectorAll('input:checked');
-        // // const checkedValues = Array.from(checkedCheckboxes).map((input) => input.value);
-        // // console.log(checkedValues);
       });
     });
 };
