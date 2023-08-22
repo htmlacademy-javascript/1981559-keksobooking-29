@@ -87,6 +87,17 @@ const ErrorText = {
   GET_DATA: 'Не удалось загрузить данные. Попробуйте обновить страницу',
   SEND_DATA: 'Не удалось отправить форму. Попробуйте ещё раз',
 };
+const mainPinIcon = L.icon({
+  iconUrl: iconConfig.main.url,
+  iconSize: [iconConfig.main.width, iconConfig.main.height],
+  iconAnchor: [iconConfig.main.anchorX, iconConfig.main.anchorY],
+});
+
+const icon = L.icon({
+  iconUrl: iconConfig.default.url,
+  iconSize: [iconConfig.default.width, iconConfig.default.height],
+  iconAnchor: [iconConfig.default.anchorX, iconConfig.default.anchorY],
+});
 
 export {
   TITLE_MIN_LENGTH,
@@ -113,5 +124,7 @@ export {
   typeOfHousingTranslate,
   roomsWords,
   guestsWords,
-  mapFilterPrices
+  mapFilterPrices,
+  mainPinIcon,
+  icon
 };
