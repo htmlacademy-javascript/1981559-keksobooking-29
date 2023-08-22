@@ -65,10 +65,6 @@ const initMap = () => {
     });
   };
 
-  // const someFunc = () => {
-  //   markerGroup.clearLayers();
-  // };
-
   getData()
     .then((receivedData) => {
       createMarkers(receivedData);
@@ -101,13 +97,14 @@ const initMap = () => {
 
         if (mapHousingPrice.value !== 'any') {
           filteredData = filteredData.filter((value) => {
+            const {offer} = value;
             switch (mapHousingPrice.value) {
               case 'low':
-                return value.offer.price <= mapFilterPrices.minimum;
+                return offer.price <= mapFilterPrices.minimum;
               case 'middle':
-                return value.offer.price >= mapFilterPrices.minimum && value.offer.price <= mapFilterPrices.maximum;
+                return offer.price >= mapFilterPrices.minimum && offer.price <= mapFilterPrices.maximum;
               case 'high':
-                return value.offer.price >= mapFilterPrices.maximum;
+                return offer.price >= mapFilterPrices.maximum;
             }
           });
         }
