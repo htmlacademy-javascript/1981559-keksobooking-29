@@ -1,13 +1,5 @@
 import {activateForms} from './form-load-status.js';
-import {
-  coordinatesOfAddress,
-  mapForm,
-  mapHousingType,
-  mapHousingPrice,
-  mapHousingRooms,
-  mapHousingGuests,
-  mapHousingFeatures
-} from './variables.js';
+import {coordinatesOfAddress, mapForm} from './variables.js';
 import {getData} from './load-data.js';
 import {createPopup} from './create-popup.js';
 import {
@@ -101,7 +93,7 @@ const initMap = () => {
         Еще надо проверять значения вайфая
          */
 
-        console.log(mapOfFilterElements.get('housing-type'));
+        console.log(mapOfFilterElements);
         const filteredMarkers = receivedData.filter((mapMarker) => {
           if (mapOfFilterElements.get('housing-type') === 'any') {
             return true;

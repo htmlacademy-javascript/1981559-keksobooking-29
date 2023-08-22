@@ -1,11 +1,6 @@
 const bodyElement = document.querySelector('body');
 
 const mapForm = document.querySelector('.map__filters');
-const mapHousingType = mapForm.querySelector('#housing-type');
-const mapHousingPrice = mapForm.querySelector('#housing-price');
-const mapHousingRooms = mapForm.querySelector('#housing-rooms');
-const mapHousingGuests = mapForm.querySelector('#housing-guests');
-const mapHousingFeatures = mapForm.querySelector('#housing-features');
 
 const adForm = document.querySelector('.ad-form');
 const coordinatesOfAddress = adForm.querySelector('#address');
@@ -60,10 +55,5 @@ export {
   successTemplate,
   successContainer,
   errorTemplate,
-  cardTemplate,
-  mapHousingType,
-  mapHousingPrice,
-  mapHousingRooms,
-  mapHousingGuests,
-  mapHousingFeatures
+  cardTemplate
 };
