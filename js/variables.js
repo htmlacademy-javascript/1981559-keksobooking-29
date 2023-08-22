@@ -1,6 +1,8 @@
 const bodyElement = document.querySelector('body');
 
 const mapForm = document.querySelector('.map__filters');
+const mapHousingType = mapForm.querySelector('#housing-type');
+const mapHousingPrice = mapForm.querySelector('#housing-price');
 const housingFeaturesContainer = mapForm.querySelector('#housing-features');
 
 const adForm = document.querySelector('.ad-form');
@@ -57,5 +59,7 @@ export {
   successContainer,
   errorTemplate,
   cardTemplate,
-  housingFeaturesContainer
+  housingFeaturesContainer,
+  mapHousingType,
+  mapHousingPrice
 };

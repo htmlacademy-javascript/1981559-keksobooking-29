@@ -4,6 +4,10 @@ const PRICE_MIN = 0;
 const PRICE_MAX = 100000;
 const PRICE_SLIDER_STEP = 1000;
 const PRICE_DEFAULT = 1000;
+const mapFilterPrices = {
+  'minimum': 10000,
+  'maximum': 50000
+};
 const minPriceValues = {
   'bungalow' : 0,
   'flat' : 1000,
@@ -108,5 +112,6 @@ export {
   startCoordinates,
   typeOfHousingTranslate,
   roomsWords,
-  guestsWords
+  guestsWords,
+  mapFilterPrices
 };

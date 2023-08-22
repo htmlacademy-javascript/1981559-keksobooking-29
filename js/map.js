@@ -1,8 +1,14 @@
 import {activateForms} from './form-load-status.js';
-import {coordinatesOfAddress, mapForm, housingFeaturesContainer} from './variables.js';
+import {
+  coordinatesOfAddress,
+  mapForm,
+  mapHousingType,
+  mapHousingPrice,
+  housingFeaturesContainer
+} from './variables.js';
 import {getData} from './load-data.js';
 import {createPopup} from './create-popup.js';
-import {COPYRIGHT, iconConfig, startCoordinates, TILE_LAYER, ZOOM,} from './constants.js';
+import {COPYRIGHT, iconConfig, startCoordinates, TILE_LAYER, ZOOM, mapFilterPrices} from './constants.js';
 
 const initMap = () => {
   const map = L.map('map-canvas')
@@ -89,9 +95,6 @@ const initMap = () => {
           }
         }
 
-        const mapHousingType = mapForm.querySelector('#housing-type');
-        const mapHousingPrice = mapForm.querySelector('#housing-price');
-
         if (mapHousingType.value !== 'any') {
           filteredData = filteredData.filter((value) => mapHousingType.value === value.offer.type);
         }
@@ -100,11 +103,11 @@ const initMap = () => {
           filteredData = filteredData.filter((value) => {
             switch (mapHousingPrice.value) {
               case 'low':
-                return value.offer.price <= 10000;
+                return value.offer.price <= mapFilterPrices.minimum;
               case 'middle':
-                return value.offer.price >= 10000 && value.offer.price <= 50000;
+                return value.offer.price >= mapFilterPrices.minimum && value.offer.price <= mapFilterPrices.maximum;
               case 'high':
-                return value.offer.price >= 50000;
+                return value.offer.price >= mapFilterPrices.maximum;
             }
           });
         }
