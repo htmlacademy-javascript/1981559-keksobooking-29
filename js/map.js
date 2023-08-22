@@ -1,5 +1,5 @@
 import {activateForms} from './form-load-status.js';
-import {coordinatesOfAddress, mapForm} from './variables.js';
+import {coordinatesOfAddress, mapForm, housingFeaturesContainer} from './variables.js';
 import {getData} from './load-data.js';
 import {createPopup} from './create-popup.js';
 import {COPYRIGHT, iconConfig, startCoordinates, TILE_LAYER, ZOOM,} from './constants.js';
@@ -68,7 +68,6 @@ const initMap = () => {
       createMarkers(receivedData);
 
       mapForm.addEventListener('change', () => {
-        const housingFeaturesContainer = mapForm.querySelector('#housing-features');
         const housingFeatures = housingFeaturesContainer.querySelectorAll('input');
         let filteredData = receivedData;
         markerGroup.clearLayers();
@@ -88,28 +87,6 @@ const initMap = () => {
             });
           }
         }
-
-        // if (wiFiInput.checked === true) {
-        //   filteredData = filteredData.filter((mapMarker) => {
-        //     const featureAvailability = mapMarker.offer.features;
-        //     return (featureAvailability !== undefined && featureAvailability.includes('wifi'));
-        //   });
-        // }
-        //
-        // if (wiFiDishwasher.checked === true) {
-        //   filteredData = filteredData.filter((mapMarker) => {
-        //     const featureAvailability = mapMarker.offer.features;
-        //     return (featureAvailability !== undefined && featureAvailability.includes('dishwasher'));
-        //   });
-        // }
-        //
-        // if (wiFiParking.checked === true) {
-        //   filteredData = filteredData.filter((mapMarker) => {
-        //     const featureAvailability = mapMarker.offer.features;
-        //     return (featureAvailability !== undefined && featureAvailability.includes('parking'));
-        //   });
-        // }
-
 
         createMarkers(filteredData);
 

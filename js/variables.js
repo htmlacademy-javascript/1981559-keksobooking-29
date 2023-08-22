@@ -1,6 +1,7 @@
 const bodyElement = document.querySelector('body');
 
 const mapForm = document.querySelector('.map__filters');
+const housingFeaturesContainer = mapForm.querySelector('#housing-features');
 
 const adForm = document.querySelector('.ad-form');
 const coordinatesOfAddress = adForm.querySelector('#address');
@@ -55,5 +56,6 @@ export {
   successTemplate,
   successContainer,
   errorTemplate,
-  cardTemplate
+  cardTemplate,
+  housingFeaturesContainer
 };
