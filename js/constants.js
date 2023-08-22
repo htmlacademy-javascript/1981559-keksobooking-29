@@ -42,7 +42,6 @@ const iconConfig = {
     anchorX: 26,
     anchorY: 52,
   },
-
   default: {
     url: './img/pin.svg',
     width: 40,
@@ -51,7 +50,6 @@ const iconConfig = {
     anchorY: 40,
   }
 };
-
 const startCoordinates = {
   lat: 35.68172,
   lng: 139.75392,
@@ -92,7 +90,6 @@ const mainPinIcon = L.icon({
   iconSize: [iconConfig.main.width, iconConfig.main.height],
   iconAnchor: [iconConfig.main.anchorX, iconConfig.main.anchorY],
 });
-
 const icon = L.icon({
   iconUrl: iconConfig.default.url,
   iconSize: [iconConfig.default.width, iconConfig.default.height],

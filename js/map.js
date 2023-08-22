@@ -2,7 +2,7 @@ import {activateForms} from './form-load-status.js';
 import {coordinatesOfAddress} from './variables.js';
 import {getData} from './load-data.js';
 import {COPYRIGHT, startCoordinates, TILE_LAYER, ZOOM, mainPinIcon} from './constants.js';
-import {activateMapFilter} from './map-filter.js';
+import {activateMapFilter} from './map-filter-activation.js';
 import {createMarkers} from './create-map-markers.js';
 
 const initMap = () => {
