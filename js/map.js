@@ -2,13 +2,7 @@ import {activateForms} from './form-load-status.js';
 import {coordinatesOfAddress, mapForm} from './variables.js';
 import {getData} from './load-data.js';
 import {createPopup} from './create-popup.js';
-import {
-  TILE_LAYER,
-  COPYRIGHT,
-  ZOOM,
-  iconConfig,
-  startCoordinates,
-} from './constants.js';
+import {COPYRIGHT, iconConfig, startCoordinates, TILE_LAYER, ZOOM,} from './constants.js';
 
 const initMap = () => {
   const map = L.map('map-canvas')
@@ -88,7 +82,9 @@ const initMap = () => {
           if (element.checked === true) {
             filteredData = filteredData.filter((mapMarker) => {
               const featureAvailability = mapMarker.offer.features;
-              return (featureAvailability !== undefined && featureAvailability.includes(getLastFeatureName(element.id)));
+              if (featureAvailability !== undefined) {
+                return featureAvailability.includes(getLastFeatureName(element.id));
+              }
             });
           }
         }
