@@ -4,6 +4,7 @@ const mapForm = document.querySelector('.map__filters');
 const mapHousingType = mapForm.querySelector('#housing-type');
 const mapHousingPrice = mapForm.querySelector('#housing-price');
 const mapHousingRooms = mapForm.querySelector('#housing-rooms');
+const mapHousingGuests = mapForm.querySelector('#housing-guests');
 const housingFeaturesContainer = mapForm.querySelector('#housing-features');
 
 const adForm = document.querySelector('.ad-form');
@@ -63,5 +64,6 @@ export {
   housingFeaturesContainer,
   mapHousingType,
   mapHousingPrice,
-  mapHousingRooms
+  mapHousingRooms,
+  mapHousingGuests
 };

@@ -5,11 +5,12 @@ import {
   mapHousingType,
   mapHousingPrice,
   housingFeaturesContainer,
-  mapHousingRooms
+  mapHousingRooms,
+  mapHousingGuests
 } from './variables.js';
 import {getData} from './load-data.js';
 import {createPopup} from './create-popup.js';
-import {COPYRIGHT, iconConfig, startCoordinates, TILE_LAYER, ZOOM, mapFilterPrices} from './constants.js';
+import {COPYRIGHT, iconConfig, startCoordinates, TILE_LAYER, ZOOM, mapFilterPrices, numberOfGuests} from './constants.js';
 
 const initMap = () => {
   const map = L.map('map-canvas')
@@ -112,6 +113,21 @@ const initMap = () => {
 
         if (mapHousingRooms.value !== 'any') {
           filteredData = filteredData.filter((value) => Number(mapHousingRooms.value) === value.offer.rooms);
+        }
+
+        if (mapHousingGuests.value !== 'any') {
+          filteredData = filteredData.filter((value) => {
+            const {offer} = value;
+            const {noGuests, oneGuest, twoGuests} = numberOfGuests;
+            switch (mapHousingGuests.value) {
+              case noGuests:
+                return offer.guests <= noGuests;
+              case '1':
+                return offer.guests <= oneGuest;
+              case '2':
+                return offer.guests <= twoGuests;
+            }
+          });
         }
 
         createMarkers(filteredData);
