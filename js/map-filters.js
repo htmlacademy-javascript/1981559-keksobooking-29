@@ -46,11 +46,11 @@ const checkGuests = (someData) => {
       const {noGuests, oneGuest, twoGuests} = numberOfGuests;
       switch (mapHousingGuests.value) {
         case noGuests:
-          return offer.guests <= noGuests;
+          return offer.guests <= Number(noGuests);
         case '1':
-          return offer.guests <= oneGuest;
+          return offer.guests === Number(oneGuest);
         case '2':
-          return offer.guests <= twoGuests;
+          return offer.guests === Number(twoGuests);
       }
     });
   }
