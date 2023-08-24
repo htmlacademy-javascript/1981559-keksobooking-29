@@ -5,7 +5,12 @@ const arrayOfChecks = [checkType, checkPrice, checkRooms, checkGuests, checkFeat
 
 const activateMapFilter = (data, markers) => {
   mapForm.addEventListener('change', () => {
-    const checkItAll = (dataMarkers, ...allFunctionsToCheck) => allFunctionsToCheck.reduce((initialData, filter) => filter(initialData), dataMarkers);
+    const checkItAll = (dataMarkers, ...allFunctionsToCheck) =>
+      allFunctionsToCheck.reduce(
+        (initialData, filter) =>
+          filter(initialData),
+        dataMarkers);
+
     const filteredData = checkItAll(data, ...arrayOfChecks);
     markers.clearLayers();
     createMarkers(filteredData, markers);
