@@ -39,9 +39,9 @@ const checkRooms = (data) => {
   return data;
 };
 
-const checkGuests = (someData) => {
+const checkGuests = (data) => {
   if (mapHousingGuests.value !== 'any') {
-    someData = someData.filter((value) => {
+    data = data.filter((value) => {
       const {offer} = value;
       const {noGuests, oneGuest, twoGuests} = numberOfGuests;
       switch (mapHousingGuests.value) {
@@ -54,7 +54,7 @@ const checkGuests = (someData) => {
       }
     });
   }
-  return someData;
+  return data;
 };
 
 const getLastFeatureName = (string) => {
