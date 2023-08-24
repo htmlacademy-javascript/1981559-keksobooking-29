@@ -10,6 +10,7 @@ const activateMapFilter = (data, markers) => {
       filteredData = value(filteredData);
     });
     //изучить метод reduce
+
     // const compose = (...allFunctionsToCheck) => {
     //       return (dataToFilter) => {
     //        return allFunctionsToCheck.reduce((previousFilteredData, filterData) => {
