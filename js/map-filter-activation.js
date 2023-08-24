@@ -5,10 +5,10 @@ const arrayOfChecks = [checkType, checkPrice, checkRooms, checkGuests, checkFeat
 
 const activateMapFilter = (data, markers) => {
   mapForm.addEventListener('change', () => {
-    let filteredData = data;
-    arrayOfChecks.forEach((value) => {
-      filteredData = value(filteredData);
-    });
+    // let filteredData = data;
+    // arrayOfChecks.forEach((value) => {
+    //   filteredData = value(filteredData);
+    // });
     //изучить метод reduce
 
     // const compose = (...allFunctionsToCheck) => {
@@ -19,9 +19,15 @@ const activateMapFilter = (data, markers) => {
     //       };
     //     };
     //
-    //     const filteredData = compose(checkType, checkPrice, checkRooms, checkGuests, checkFeatures)(data);
-    // const composedFunction = (someData) => checkFeatures(checkGuests(checkRooms(checkPrice(checkType(someData)))));
-    // filteredData = composedFunction(filteredData);
+    // const filteredData = compose(...arrayOfChecks)(data);
+
+    const checkItAll = (dataMarkers, ...allFunctionsToCheck) => {
+      return allFunctionsToCheck.reduce((acc, item) => {
+        return item(acc);
+      }, dataMarkers);
+    };
+    const filteredData = checkItAll(data, checkType, checkPrice, checkRooms, checkGuests, checkFeatures);
+
     markers.clearLayers();
     createMarkers(filteredData, markers);
   });
