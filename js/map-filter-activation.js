@@ -15,6 +15,15 @@ const featureFilters = {
   'filter-elevator': 'elevator',
   'filter-conditioner': 'conditioner'
 };
+const addElementCheck = (element) => (dataOfMarkers) => {
+  dataOfMarkers = dataOfMarkers.filter((mapMarkerData) => {
+    const featureAvailability = mapMarkerData.offer.features;
+    if (featureAvailability !== undefined) {
+      return featureAvailability.includes(featureFilters[element.id]);
+    }
+  });
+  return dataOfMarkers;
+};
 
 const activateMapFilter = (data, markers) => {
   mapForm.addEventListener('change', () => {
@@ -26,16 +35,7 @@ const activateMapFilter = (data, markers) => {
       const isSelect = element.tagName === 'SELECT';
       const isSelectNotAny = element.value !== 'any';
       if (isInput && isInputChecked) {
-        const checkElement = (dataOfMarkers) => {
-          dataOfMarkers = dataOfMarkers.filter((mapMarkerData) => {
-            const featureAvailability = mapMarkerData.offer.features;
-            if (featureAvailability !== undefined) {
-              return featureAvailability.includes(featureFilters[element.id]);
-            }
-          });
-          return dataOfMarkers;
-        };
-        arrayOfChecks.push(checkElement);
+        arrayOfChecks.push(addElementCheck(element));
       }
       if (isSelect && isSelectNotAny) {
         arrayOfChecks.push(selectorFilters[element.name]);
