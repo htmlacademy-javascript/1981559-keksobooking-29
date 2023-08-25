@@ -28,13 +28,13 @@ const activateMapFilter = (data, markers) => {
         arrayOfChecks.push(selectorFilters[element.name]);
       }
     }
-    const checkItAll = (dataMarkers, ...allFunctionsToCheck) =>
+    const filterDataMarkers = (dataMarkers, ...allFunctionsToCheck) =>
       allFunctionsToCheck.reduce(
         (initialData, filter) =>
           filter(initialData),
         dataMarkers);
 
-    const filteredData = checkItAll(data, ...arrayOfChecks);
+    const filteredData = filterDataMarkers(data, ...arrayOfChecks);
     markers.clearLayers();
     createMarkers(filteredData, markers);
   });
