@@ -1,20 +1,7 @@
 import {mapForm} from './variables.js';
 import {createMarkers} from './create-map-markers.js';
-import {checkType, checkPrice, checkRooms, checkGuests} from './map-filters.js';
-const selectorFilters = {
-  'housing-type': checkType,
-  'housing-price': checkPrice,
-  'housing-rooms': checkRooms,
-  'housing-guests': checkGuests,
-};
-const featureFilters = {
-  'filter-wifi': 'wifi',
-  'filter-dishwasher': 'dishwasher',
-  'filter-parking': 'parking',
-  'filter-washer': 'washer',
-  'filter-elevator': 'elevator',
-  'filter-conditioner': 'conditioner'
-};
+import {selectorFilters, featureFilters} from './constants.js';
+
 const addElementCheck = (element) => (dataOfMarkers) => {
   dataOfMarkers = dataOfMarkers.filter((mapMarkerData) => {
     const featureAvailability = mapMarkerData.offer.features;

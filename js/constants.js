@@ -1,3 +1,5 @@
+import {checkGuests, checkPrice, checkRooms, checkType} from './map-filters.js';
+
 const TITLE_MIN_LENGTH = 30;
 const TITLE_MAX_LENGTH = 100;
 const PRICE_MIN = 0;
@@ -33,6 +35,20 @@ const numberOfGuests = {
   'twoGuests' : '2',
   'threeGuests' : '3',
   'noGuests' : '0'
+};
+const selectorFilters = {
+  'housing-type': checkType,
+  'housing-price': checkPrice,
+  'housing-rooms': checkRooms,
+  'housing-guests': checkGuests,
+};
+const featureFilters = {
+  'filter-wifi': 'wifi',
+  'filter-dishwasher': 'dishwasher',
+  'filter-parking': 'parking',
+  'filter-washer': 'washer',
+  'filter-elevator': 'elevator',
+  'filter-conditioner': 'conditioner'
 };
 const iconConfig = {
   main: {
@@ -123,5 +139,7 @@ export {
   guestsWords,
   mapFilterPrices,
   mainPinIcon,
-  icon
+  icon,
+  selectorFilters,
+  featureFilters
 };
