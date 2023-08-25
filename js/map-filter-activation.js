@@ -1,6 +1,7 @@
 import {mapForm} from './variables.js';
 import {createMarkers} from './create-map-markers.js';
 import {selectorFilters, featureFilters} from './constants.js';
+import {debounce} from './util.js';
 
 const addElementCheck = (element) => (dataOfMarkers) => {
   dataOfMarkers = dataOfMarkers.filter((mapMarkerData) => {
@@ -13,7 +14,7 @@ const addElementCheck = (element) => (dataOfMarkers) => {
 };
 
 const activateMapFilter = (data, markers) => {
-  mapForm.addEventListener('change', () => {
+  const onMapFormChange = () => {
     const arrayOfChecks = [];
 
     for (const element of mapForm) {
@@ -37,7 +38,8 @@ const activateMapFilter = (data, markers) => {
     const filteredData = filterDataMarkers(data, ...arrayOfChecks);
     markers.clearLayers();
     createMarkers(filteredData, markers);
-  });
+  };
+  mapForm.addEventListener('change', debounce(onMapFormChange));
 };
 
 export {activateMapFilter};
