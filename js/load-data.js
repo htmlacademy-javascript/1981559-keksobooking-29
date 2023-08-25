@@ -4,6 +4,7 @@ import {
   Method,
   ErrorText
 } from './constants.js';
+import {showError} from './error-message.js';
 
 
 const load = (route, errorText, method = Method.GET, body = null) =>
@@ -15,6 +16,7 @@ const load = (route, errorText, method = Method.GET, body = null) =>
       return response.json();
     })
     .catch(() => {
+      showError(errorText);
       throw new Error(errorText);
     });
 
