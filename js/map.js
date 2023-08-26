@@ -1,4 +1,4 @@
-import {activateForms} from './form-load-status.js';
+import {activateAdForm, activateMapForm} from './form-load-status.js';
 import {coordinatesOfAddress} from './variables.js';
 import {getData} from './load-data.js';
 import {COPYRIGHT, startCoordinates, TILE_LAYER, ZOOM, mainPinIcon} from './constants.js';
@@ -10,7 +10,7 @@ const initMap = () => {
     .then((receivedData) => {
       const map = L.map('map-canvas')
         .on('load', () => {
-          activateForms();
+          activateAdForm();
         })
         .setView(startCoordinates, ZOOM);
 
@@ -32,6 +32,7 @@ const initMap = () => {
 
       const markerGroup = L.layerGroup().addTo(map);
       createMarkers(receivedData, markerGroup);
+      activateMapForm();
       activateMapFilter(receivedData, markerGroup);
     });
 };

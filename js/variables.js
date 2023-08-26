@@ -24,7 +24,8 @@ const timeOut = adForm.querySelector('#timeout');
 const roomNumber = adForm.querySelector('#room_number');
 const capacity = adForm.querySelector('#capacity');
 
-const interactiveFormElements = document.querySelectorAll('select, fieldset');
+const interactiveMapFormElements = mapForm.querySelectorAll('select, fieldset');
+const interactiveAdFormElements = adForm.querySelectorAll('select, fieldset');
 
 const successTemplate = document.querySelector('#success')
   .content
@@ -38,7 +39,8 @@ const cardTemplate = document.querySelector('#card')
   .querySelector('.popup');
 
 export {
-  interactiveFormElements,
+  interactiveMapFormElements,
+  interactiveAdFormElements,
   adForm,
   mapForm,
   coordinatesOfAddress,

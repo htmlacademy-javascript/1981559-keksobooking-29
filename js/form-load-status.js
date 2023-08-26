@@ -1,21 +1,23 @@
-import {adForm, interactiveFormElements, mapForm, priceInput} from './variables.js';
+import {adForm, interactiveMapFormElements, interactiveAdFormElements, mapForm, priceInput} from './variables.js';
 import {resetForm} from './reset-form.js';
 import {onSubmit} from './submit-button.js';
 
 const deactivateForms = () => {
-  interactiveFormElements.forEach((element) => {
+  interactiveMapFormElements.forEach((element) => {
+    element.disabled = true;
+  });
+  interactiveAdFormElements.forEach((element) => {
     element.disabled = true;
   });
   adForm.classList.add('ad-form--disabled');
   mapForm.classList.add('map__filters--disabled');
 };
 
-const activateForms = () => {
-  interactiveFormElements.forEach((element) => {
+const activateAdForm = () => {
+  interactiveAdFormElements.forEach((element) => {
     element.disabled = false;
   });
   adForm.classList.remove('ad-form--disabled');
-  mapForm.classList.remove('map__filters--disabled');
   adForm.addEventListener('reset', resetForm);
   adForm.addEventListener('submit', onSubmit);
   priceInput.addEventListener('keydown', (evt) => {
@@ -25,4 +27,11 @@ const activateForms = () => {
   });
 };
 
-export {deactivateForms, activateForms};
+const activateMapForm = () => {
+  interactiveMapFormElements.forEach((element) => {
+    element.disabled = false;
+  });
+  mapForm.classList.remove('map__filters--disabled');
+};
+
+export {deactivateForms, activateAdForm, activateMapForm};
