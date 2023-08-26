@@ -1,9 +1,9 @@
-import {icon} from './constants.js';
+import {icon, MAX_SHOWN_MARKERS} from './constants.js';
 import {createPopup} from './create-popup.js';
 
 const createMarkers = (data, markers) => {
-  data.forEach((card) => {
-    const {location} = card;
+  for (let i = 0; i < data.length && i < MAX_SHOWN_MARKERS; i++) {
+    const {location} = data[i];
     const {lat, lng} = location;
     const marker = L.marker(
       {
@@ -16,8 +16,8 @@ const createMarkers = (data, markers) => {
     );
     marker
       .addTo(markers)
-      .bindPopup(createPopup(card));
-  });
+      .bindPopup(createPopup(data[i]));
+  }
 };
 
 export {createMarkers};

@@ -6,6 +6,7 @@ const PRICE_MIN = 0;
 const PRICE_MAX = 100000;
 const PRICE_SLIDER_STEP = 1000;
 const PRICE_DEFAULT = 1000;
+const MAX_SHOWN_MARKERS = 10;
 const mapFilterPrices = {
   'minimum': 10000,
   'maximum': 50000
@@ -120,6 +121,7 @@ export {
   PRICE_MAX,
   PRICE_SLIDER_STEP,
   PRICE_DEFAULT,
+  MAX_SHOWN_MARKERS,
   minPriceValues,
   SubmitButtonText,
   pristineDefaultConfig,
