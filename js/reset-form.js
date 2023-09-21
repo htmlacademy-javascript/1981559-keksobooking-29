@@ -1,12 +1,31 @@
-import {housingImageContainer, housingImageWrapper, imageToUploadWrapper} from './variables.js';
+import {
+  coordinatesOfAddress,
+  formTitle,
+  housingImageContainer,
+  housingImageWrapper,
+  housingType,
+  imageToUploadWrapper,
+  priceInput,
+} from './variables.js';
 import {resetPriceSlider} from './price-slider.js';
 import {pristine} from './validation.js';
+import {startCoordinates} from './constants.js';
 
 const defaultHousingImage = housingImageWrapper.cloneNode();
+const hosingTypeCopy = housingType.cloneNode(true);
 
-const resetForm = () => {
+const resetForm = (evt) => {
+  evt.preventDefault();
+  const {lat, lng} = startCoordinates;
+  coordinatesOfAddress.value = `${lat} ${lng}`;
+  formTitle.value = '';
   resetPriceSlider();
+  priceInput.value = '';
   pristine.reset();
+  housingType.innerHTML = '';
+  for (const option of hosingTypeCopy) {
+    housingType.appendChild(option.cloneNode(true));
+  }
   imageToUploadWrapper.innerHTML = '';
   imageToUploadWrapper.style.padding = '0 15px';
   const defaultElement = document.createElement('img');
