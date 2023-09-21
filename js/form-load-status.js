@@ -1,6 +1,14 @@
-import {adForm, interactiveMapFormElements, interactiveAdFormElements, mapForm, priceInput} from './variables.js';
+import {
+  adForm,
+  interactiveMapFormElements,
+  interactiveAdFormElements,
+  mapForm,
+  priceInput,
+  coordinatesOfAddress,
+} from './variables.js';
 import {resetForm} from './reset-form.js';
 import {onSubmit} from './submit-button.js';
+import {startCoordinates} from './constants.js';
 
 const deactivateForms = () => {
   interactiveMapFormElements.forEach((element) => {
@@ -25,6 +33,8 @@ const activateAdForm = () => {
       evt.preventDefault();
     }
   });
+  const {lat, lng} = startCoordinates;
+  coordinatesOfAddress.value = `${lat} ${lng}`;
 };
 
 const activateMapForm = () => {
