@@ -9,21 +9,25 @@ import {
 } from './variables.js';
 import {resetPriceSlider} from './price-slider.js';
 import {pristine} from './validation.js';
-import {startCoordinates} from './constants.js';
+import {minPriceValues, startCoordinates} from './constants.js';
 
 const defaultHousingImage = housingImageWrapper.cloneNode();
-const hosingTypeCopy = housingType.cloneNode(true);
+const housingTypeCopy = housingType.cloneNode(true);
+const selectedIndex = housingTypeCopy.selectedIndex;
+const selectedOption = housingTypeCopy.options[selectedIndex];
+const initialHousingTypeValue = selectedOption.value;
 
 const resetForm = (evt) => {
   evt.preventDefault();
   const {lat, lng} = startCoordinates;
-  coordinatesOfAddress.value = `${lat} ${lng}`;
   formTitle.value = '';
+  coordinatesOfAddress.value = `${lat} ${lng}`;
   resetPriceSlider();
   priceInput.value = '';
+  priceInput.placeholder = minPriceValues[initialHousingTypeValue];
   pristine.reset();
   housingType.innerHTML = '';
-  for (const option of hosingTypeCopy) {
+  for (const option of housingTypeCopy) {
     housingType.appendChild(option.cloneNode(true));
   }
   imageToUploadWrapper.innerHTML = '';
