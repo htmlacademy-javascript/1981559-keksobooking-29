@@ -16,6 +16,7 @@ import {
 import {resetPriceSlider} from './price-slider.js';
 import {pristine} from './validation.js';
 import {minPriceValues, startCoordinates} from './constants.js';
+import {mainPinMarker} from './map.js';
 
 const defaultHousingImage = housingImageWrapper.cloneNode();
 const housingTypeCopy = housingType.cloneNode(true);
@@ -46,7 +47,7 @@ const resetForm = (evt) => {
   evt.preventDefault();
   const {lat, lng} = startCoordinates;
   formTitle.value = '';
-  coordinatesOfAddress.value = `${lat} ${lng}`;
+  coordinatesOfAddress.value = `${lat}, ${lng}`;
   resetPriceSlider();
   priceInput.value = '';
   priceInput.placeholder = minPriceValues[initialHousingTypeValue];
@@ -58,6 +59,8 @@ const resetForm = (evt) => {
   featuresContainer.innerHTML = featuresContainerCopy.innerHTML;
   housingDescription.value = '';
   imageToUploadWrapper.innerHTML = '';
+  const newCoordinates = L.latLng(lat, lng);
+  mainPinMarker.setLatLng(newCoordinates);
   imageToUploadWrapper.style.padding = '0 15px';
   const defaultElement = document.createElement('img');
   defaultElement.src = 'img/muffin-grey.svg';

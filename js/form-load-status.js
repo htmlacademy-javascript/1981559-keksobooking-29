@@ -34,7 +34,7 @@ const activateAdForm = () => {
     }
   });
   const {lat, lng} = startCoordinates;
-  coordinatesOfAddress.value = `${lat} ${lng}`;
+  coordinatesOfAddress.value = `${lat}, ${lng}`;
 };
 
 const activateMapForm = () => {
