@@ -6,6 +6,10 @@ import {
   housingType,
   imageToUploadWrapper,
   priceInput,
+  timeIn,
+  timeOut,
+  roomNumber,
+  capacity,
 } from './variables.js';
 import {resetPriceSlider} from './price-slider.js';
 import {pristine} from './validation.js';
@@ -16,6 +20,24 @@ const housingTypeCopy = housingType.cloneNode(true);
 const selectedIndex = housingTypeCopy.selectedIndex;
 const selectedOption = housingTypeCopy.options[selectedIndex];
 const initialHousingTypeValue = selectedOption.value;
+const timeInCopy = timeIn.cloneNode(true);
+const timeOutCopy = timeOut.cloneNode(true);
+const roomNumberCopy = roomNumber.cloneNode(true);
+const capacityCopy = capacity.cloneNode(true);
+
+const elementsToReset = [
+  { copy: housingTypeCopy, original: housingType },
+  { copy: timeInCopy, original: timeIn },
+  { copy: timeOutCopy, original: timeOut },
+  { copy: roomNumberCopy, original: roomNumber },
+  { copy: capacityCopy, original: capacity }
+];
+
+const returnToInitialSelect = (selectCopy, select) => {
+  for (const option of selectCopy) {
+    select.appendChild(option.cloneNode(true));
+  }
+};
 
 const resetForm = (evt) => {
   evt.preventDefault();
@@ -26,10 +48,11 @@ const resetForm = (evt) => {
   priceInput.value = '';
   priceInput.placeholder = minPriceValues[initialHousingTypeValue];
   pristine.reset();
-  housingType.innerHTML = '';
-  for (const option of housingTypeCopy) {
-    housingType.appendChild(option.cloneNode(true));
-  }
+  elementsToReset.forEach((element) => {
+    element.original.innerHTML = '';
+    returnToInitialSelect(element.copy, element.original);
+  });
+
   imageToUploadWrapper.innerHTML = '';
   imageToUploadWrapper.style.padding = '0 15px';
   const defaultElement = document.createElement('img');
