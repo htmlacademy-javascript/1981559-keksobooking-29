@@ -10,6 +10,7 @@ import {
   timeOut,
   roomNumber,
   capacity,
+  featuresContainer
 } from './variables.js';
 import {resetPriceSlider} from './price-slider.js';
 import {pristine} from './validation.js';
@@ -24,6 +25,7 @@ const timeInCopy = timeIn.cloneNode(true);
 const timeOutCopy = timeOut.cloneNode(true);
 const roomNumberCopy = roomNumber.cloneNode(true);
 const capacityCopy = capacity.cloneNode(true);
+const featuresContainerCopy = featuresContainer.cloneNode(true);
 
 const elementsToReset = [
   { copy: housingTypeCopy, original: housingType },
@@ -32,6 +34,7 @@ const elementsToReset = [
   { copy: roomNumberCopy, original: roomNumber },
   { copy: capacityCopy, original: capacity }
 ];
+
 
 const returnToInitialSelect = (selectCopy, select) => {
   for (const option of selectCopy) {
@@ -52,6 +55,8 @@ const resetForm = (evt) => {
     element.original.innerHTML = '';
     returnToInitialSelect(element.copy, element.original);
   });
+
+  featuresContainer.innerHTML = featuresContainerCopy.innerHTML;
 
   imageToUploadWrapper.innerHTML = '';
   imageToUploadWrapper.style.padding = '0 15px';
