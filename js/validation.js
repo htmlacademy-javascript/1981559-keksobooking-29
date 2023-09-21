@@ -112,7 +112,7 @@ const getMinPriceErrorMessage = () => {
 };
 
 pristine.addValidator(formTitle, checkLength, 'От 30 до 100 символов.');
-pristine.addValidator(roomNumber, checkRooms, getRoomsErrorMessage);
+pristine.addValidator(capacity, checkRooms, getRoomsErrorMessage);
 pristine.addValidator(priceInput, checkMinPrice, getMinPriceErrorMessage);
 
 export {pristine};
