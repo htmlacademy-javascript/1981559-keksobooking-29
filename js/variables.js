@@ -24,6 +24,7 @@ const timeOut = adForm.querySelector('#timeout');
 const roomNumber = adForm.querySelector('#room_number');
 const capacity = adForm.querySelector('#capacity');
 const featuresContainer = adForm.querySelector('.features');
+const housingDescription = adForm.querySelector('#description');
 
 const interactiveMapFormElements = mapForm.querySelectorAll('select, fieldset');
 const interactiveAdFormElements = adForm.querySelectorAll('select, fieldset');
@@ -69,5 +70,6 @@ export {
   mapHousingPrice,
   mapHousingRooms,
   mapHousingGuests,
-  featuresContainer
+  featuresContainer,
+  housingDescription
 };

@@ -10,7 +10,8 @@ import {
   timeOut,
   roomNumber,
   capacity,
-  featuresContainer
+  featuresContainer,
+  housingDescription
 } from './variables.js';
 import {resetPriceSlider} from './price-slider.js';
 import {pristine} from './validation.js';
@@ -35,7 +36,6 @@ const elementsToReset = [
   { copy: capacityCopy, original: capacity }
 ];
 
-
 const returnToInitialSelect = (selectCopy, select) => {
   for (const option of selectCopy) {
     select.appendChild(option.cloneNode(true));
@@ -55,9 +55,8 @@ const resetForm = (evt) => {
     element.original.innerHTML = '';
     returnToInitialSelect(element.copy, element.original);
   });
-
   featuresContainer.innerHTML = featuresContainerCopy.innerHTML;
-
+  housingDescription.value = '';
   imageToUploadWrapper.innerHTML = '';
   imageToUploadWrapper.style.padding = '0 15px';
   const defaultElement = document.createElement('img');

@@ -29,7 +29,7 @@ const onSubmit = (evt) => {
       )
       .then(
         () => {
-          resetForm();
+          resetForm(evt);
           adForm.reset();
         }
       )
