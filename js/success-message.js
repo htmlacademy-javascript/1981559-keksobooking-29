@@ -3,20 +3,20 @@ import {isEscapeKey} from './util.js';
 
 const showSuccess = () => {
   const successElement = successTemplate.cloneNode(true);
-  let onEscapeKeydown = () => {};
+  let returnToFormOnEscapeClick = () => {};
 
   const removeSuccessMessage = () => {
-    document.removeEventListener('keydown', onEscapeKeydown);
+    document.removeEventListener('keydown', returnToFormOnEscapeClick);
     successElement.remove();
   };
 
-  onEscapeKeydown = (evt) => {
+  returnToFormOnEscapeClick = (evt) => {
     if (isEscapeKey(evt)) {
       removeSuccessMessage();
     }
   };
 
-  document.addEventListener('keydown', onEscapeKeydown);
+  document.addEventListener('keydown', returnToFormOnEscapeClick);
   const onOutsideSuccessContainerClick = (evt) => {
     const outsideErrorContainerClick = evt.composedPath().includes(successContainer) === false;
     if (outsideErrorContainerClick) {

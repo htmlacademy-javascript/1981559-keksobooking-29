@@ -43,7 +43,7 @@ const returnToInitialSelect = (selectCopy, select) => {
   }
 };
 
-const onFormReset = (evt) => {
+const resetForm = (evt) => {
   evt.preventDefault();
   const {lat, lng} = startCoordinates;
   formTitle.value = '';
@@ -76,4 +76,4 @@ const onFormReset = (evt) => {
   housingImageContainer.appendChild(defaultHousingImage);
 };
 
-export {onFormReset};
+export {resetForm};

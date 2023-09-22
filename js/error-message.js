@@ -6,31 +6,31 @@ const showError = (message) => {
   const errorMessage = errorElement.querySelector('.error__message');
   const errorButton = errorElement.querySelector('.error__button');
   errorMessage.textContent = message;
-  let onEscapeKeydown = () => {};
+  let returnToFormOnEscapeClick = () => {};
 
-  const onErrorButtonClick = () => {
-    errorButton.removeEventListener('click', onErrorButtonClick);
-    document.removeEventListener('keydown', onEscapeKeydown);
+  const removeErrorMessage = () => {
+    errorButton.removeEventListener('click', removeErrorMessage);
+    document.removeEventListener('keydown', returnToFormOnEscapeClick);
     errorElement.remove();
   };
 
-  onEscapeKeydown = (evt) => {
+  returnToFormOnEscapeClick = (evt) => {
     if (isEscapeKey(evt)) {
-      onErrorButtonClick();
+      removeErrorMessage();
     }
   };
 
-  document.addEventListener('keydown', onEscapeKeydown);
+  document.addEventListener('keydown', returnToFormOnEscapeClick);
   const onOutsideErrorContainerClick = (evt) => {
     const outsideErrorContainerClick = evt.composedPath().includes(errorTemplate) === false;
     if (outsideErrorContainerClick) {
       document.removeEventListener('click', onOutsideErrorContainerClick);
-      onErrorButtonClick();
+      removeErrorMessage();
     }
   };
 
   document.addEventListener('click', onOutsideErrorContainerClick);
-  errorButton.addEventListener('click', onErrorButtonClick);
+  errorButton.addEventListener('click', removeErrorMessage);
 
   bodyElement.appendChild(errorElement);
 };

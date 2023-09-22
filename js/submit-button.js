@@ -3,7 +3,7 @@ import {adForm, submitButton} from './variables.js';
 import {pristine} from './validation.js';
 import {sendData} from './load-data.js';
 import {showSuccess} from './success-message.js';
-import {onFormReset} from './reset-form.js';
+import {resetForm} from './reset-form.js';
 import {showError} from './error-message.js';
 
 const blockSubmitButton = () => {
@@ -16,7 +16,7 @@ const unblockSubmitButton = () => {
   submitButton.textContent = SubmitButtonText.IDLE;
 };
 
-const onFormSubmit = (evt) => {
+const onSubmit = (evt) => {
   evt.preventDefault();
   const isValid = pristine.validate();
   if (isValid) {
@@ -29,7 +29,7 @@ const onFormSubmit = (evt) => {
       )
       .then(
         () => {
-          onFormReset(evt);
+          resetForm(evt);
           adForm.reset();
         }
       )
@@ -42,4 +42,4 @@ const onFormSubmit = (evt) => {
   }
 };
 
-export {blockSubmitButton, unblockSubmitButton, onFormSubmit};
+export {blockSubmitButton, unblockSubmitButton, onSubmit};

@@ -8,7 +8,7 @@ import {
 import {FILE_TYPES} from './constants.js';
 
 const initUploadImage = () => {
-  const onMapImageUpload = () => {
+  const uploadMapImage = () => {
     const file = uploadMapImageInput.files[0];
     const fileName = file.name.toLowerCase();
     const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
@@ -23,7 +23,7 @@ const initUploadImage = () => {
     }
   };
 
-  const onHousingImageUpload = () => {
+  const uploadHousingImage = () => {
     const emptyDefaultHousingImageWrapper = housingImageContainer.querySelector('.ad-form__photo');
     const imgElementForCheck = emptyDefaultHousingImageWrapper.querySelector('img');
     const isTheFirstElementEmpty = imgElementForCheck === null;
@@ -48,8 +48,8 @@ const initUploadImage = () => {
     }
   };
 
-  imagesUploadInput.addEventListener('change', onHousingImageUpload);
-  uploadMapImageInput.addEventListener('change', onMapImageUpload);
+  imagesUploadInput.addEventListener('change', uploadHousingImage);
+  uploadMapImageInput.addEventListener('change', uploadMapImage);
 };
 
 export {initUploadImage};
