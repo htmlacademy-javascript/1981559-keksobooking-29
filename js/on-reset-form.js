@@ -15,7 +15,7 @@ import {
 } from './variables.js';
 import {resetPriceSlider} from './price-slider.js';
 import {pristine} from './validation.js';
-import {minPriceValues, startCoordinates} from './constants.js';
+import {minPriceValues, startCoordinates, imageSizesAfterReset} from './constants.js';
 import {mainPinMarker} from './map.js';
 
 const defaultHousingImage = housingImageWrapper.cloneNode();
@@ -65,8 +65,8 @@ const onResetForm = (evt) => {
   const defaultElement = document.createElement('img');
   defaultElement.src = 'img/muffin-grey.svg';
   defaultElement.alt = 'Аватар пользователя';
-  defaultElement.width = 40;
-  defaultElement.height = 44;
+  defaultElement.width = imageSizesAfterReset.width;
+  defaultElement.height = imageSizesAfterReset.height;
   imageToUploadWrapper.appendChild(defaultElement);
 
   const housingPhotos = housingImageContainer.querySelectorAll('.ad-form__photo');
