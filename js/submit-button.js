@@ -3,7 +3,7 @@ import {adForm, submitButton} from './variables.js';
 import {pristine} from './validation.js';
 import {sendData} from './load-data.js';
 import {showSuccess} from './success-message.js';
-import {resetForm} from './reset-form.js';
+import {onResetForm} from './on-reset-form.js';
 import {showError} from './error-message.js';
 
 const blockSubmitButton = () => {
@@ -29,7 +29,7 @@ const onSubmit = (evt) => {
       )
       .then(
         () => {
-          resetForm();
+          onResetForm(evt);
           adForm.reset();
         }
       )

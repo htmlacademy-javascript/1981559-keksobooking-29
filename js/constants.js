@@ -71,6 +71,14 @@ const startCoordinates = {
   lat: 35.68172,
   lng: 139.75392,
 };
+const uploadedImageSizes = {
+  width: 70,
+  height: 70,
+};
+const imageSizesAfterReset = {
+  width: 40,
+  height: 44,
+};
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 const roomsWords = ['комната', 'комнаты', 'комнат'];
 const guestsWords = ['гостя', 'гостей', 'гостей'];
@@ -143,5 +151,7 @@ export {
   mainPinIcon,
   icon,
   selectorFilters,
-  featureFilters
+  featureFilters,
+  uploadedImageSizes,
+  imageSizesAfterReset
 };

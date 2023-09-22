@@ -23,6 +23,8 @@ const timeIn = adForm.querySelector('#timein');
 const timeOut = adForm.querySelector('#timeout');
 const roomNumber = adForm.querySelector('#room_number');
 const capacity = adForm.querySelector('#capacity');
+const featuresContainer = adForm.querySelector('.features');
+const housingDescription = adForm.querySelector('#description');
 
 const interactiveMapFormElements = mapForm.querySelectorAll('select, fieldset');
 const interactiveAdFormElements = adForm.querySelectorAll('select, fieldset');
@@ -67,5 +69,7 @@ export {
   mapHousingType,
   mapHousingPrice,
   mapHousingRooms,
-  mapHousingGuests
+  mapHousingGuests,
+  featuresContainer,
+  housingDescription
 };

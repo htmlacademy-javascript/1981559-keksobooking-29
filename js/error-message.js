@@ -6,31 +6,31 @@ const showError = (message) => {
   const errorMessage = errorElement.querySelector('.error__message');
   const errorButton = errorElement.querySelector('.error__button');
   errorMessage.textContent = message;
-  let returnToFormOnEscapeClick = () => {};
+  let onEscapeClickReturnToForm = () => {};
 
-  const removeErrorMessage = () => {
-    errorButton.removeEventListener('click', removeErrorMessage);
-    document.removeEventListener('keydown', returnToFormOnEscapeClick);
+  const onErrorButtonClickRemoveErrorMessage = () => {
+    errorButton.removeEventListener('click', onErrorButtonClickRemoveErrorMessage);
+    document.removeEventListener('keydown', onEscapeClickReturnToForm);
     errorElement.remove();
   };
 
-  returnToFormOnEscapeClick = (evt) => {
+  onEscapeClickReturnToForm = (evt) => {
     if (isEscapeKey(evt)) {
-      removeErrorMessage();
+      onErrorButtonClickRemoveErrorMessage();
     }
   };
 
-  document.addEventListener('keydown', returnToFormOnEscapeClick);
+  document.addEventListener('keydown', onEscapeClickReturnToForm);
   const onOutsideErrorContainerClick = (evt) => {
     const outsideErrorContainerClick = evt.composedPath().includes(errorTemplate) === false;
     if (outsideErrorContainerClick) {
       document.removeEventListener('click', onOutsideErrorContainerClick);
-      removeErrorMessage();
+      onErrorButtonClickRemoveErrorMessage();
     }
   };
 
   document.addEventListener('click', onOutsideErrorContainerClick);
-  errorButton.addEventListener('click', removeErrorMessage);
+  errorButton.addEventListener('click', onErrorButtonClickRemoveErrorMessage);
 
   bodyElement.appendChild(errorElement);
 };
