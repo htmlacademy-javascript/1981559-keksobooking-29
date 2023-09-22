@@ -6,7 +6,7 @@ import {
   priceInput,
   coordinatesOfAddress,
 } from './variables.js';
-import {resetForm} from './reset-form.js';
+import {onResetForm} from './on-reset-form.js';
 import {onSubmit} from './submit-button.js';
 import {startCoordinates} from './constants.js';
 
@@ -26,7 +26,7 @@ const activateAdForm = () => {
     element.disabled = false;
   });
   adForm.classList.remove('ad-form--disabled');
-  adForm.addEventListener('reset', resetForm);
+  adForm.addEventListener('reset', onResetForm);
   adForm.addEventListener('submit', onSubmit);
   priceInput.addEventListener('keydown', (evt) => {
     if (evt.key === '-' || evt.key === '+' || evt.key === 'e') {
